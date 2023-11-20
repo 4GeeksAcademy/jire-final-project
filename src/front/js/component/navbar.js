@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logoUrl from "../../img/jrie_logo.jpg";
 
 export const Navbar = () => {
 	return (
-		<div className="container">
+		<div className="container mt-2">
 			<nav className="navbar navbar-inverse">
 				<div className="container-fluid">
 					<div className="navbar-logo">
-						<a className="navbar-brand" href="#">JRIE</a>
+						<a href="/"><img src={logoUrl} height="120" width="120" /></a>
 					</div>
 					<div>
 						<div className="navbar-buttons">
