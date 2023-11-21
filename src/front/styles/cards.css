@@ -4,23 +4,29 @@
     align-items: center;
   }
   
-  .card {
+  /* .card-buttons {
     background-color: rgb(43, 43, 43);;
     margin: 20px;
     padding: 50px;
-  }
+  } */
 
   
   
-  button {
-    background-color: rgb(43, 43, 43);
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  .button-card {
+  background-color: #ffffff; 
+  color: #343a40;
+  border: 1px solid #343a40; 
+  border-radius: 5px;
+  padding: 30px 27px; 
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; 
+  margin: 20px;
+  font-size: 25px;
+  }
+
+  
+  .button-card:hover {
+    background-color: #1d2124; /* Color de fondo oscuro más claro al hacer hover */
+    color: #ffffff; /* Color del texto blanco al hacer hover */
   }
   
-  button:hover {
-    background-color: rgb(43, 43, 43);
-  }
