@@ -5,15 +5,15 @@
   }
   
   .card {
+    background-color: rgb(43, 43, 43);;
     margin: 20px;
-    padding: 40px;
-    border: 1px solid #ccc;
+    padding: 50px;
   }
 
   
   
   button {
-    background-color: #4CAF50;
+    background-color: rgb(43, 43, 43);
     color: white;
     padding: 10px 15px;
     border: none;
@@ -22,5 +22,5 @@
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: rgb(43, 43, 43);
   }
