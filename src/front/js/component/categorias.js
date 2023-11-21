@@ -50,7 +50,7 @@ export const Categorias = () => {
                         <div class="card text-center">
                             <div class="card-body">
                                 <i class="fas fa-box-open fa-2x mb-2"></i>
-                                <h5 class="card-title">Servicios de Mudanza</h5>
+                                <h5 class="card-title">Mudanzas</h5>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@ export const Categorias = () => {
                         <div class="card text-center">
                             <div class="card-body">
                                 <i class="fas fa-laptop fa-2x mb-2"></i>
-                                <h5 class="card-title">Servicios de Tecnología</h5>
+                                <h5 class="card-title">Tecnología</h5>
                             </div>
                         </div>
                     </div>
