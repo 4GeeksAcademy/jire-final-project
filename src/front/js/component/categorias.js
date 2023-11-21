@@ -9,44 +9,44 @@ export const Categorias = () => {
             <div class="container mt-4">
                 <div class="row">
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <div class="card text-center">
                             <div class="card-body">
                                 <i class="fas fa-tools fa-2x mb-2"></i>
-                                <h5 class="card-title">Servicios de Mantenimiento</h5>
+                                <h5 class="card-title">Mantenimiento</h5>
                             </div>
                         </div>
                     </div>
 
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <div class="card text-center">
                             <div class="card-body">
                                 <i class="fas fa-broom fa-2x mb-2"></i>
-                                <h5 class="card-title">Servicios de Limpieza</h5>
+                                <h5 class="card-title">Limpieza</h5>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <div class="card text-center">
                             <div class="card-body">
                                 <i class="fas fa-building fa-2x mb-2"></i>
-                                <h5 class="card-title">Servicios de Construcción</h5>
+                                <h5 class="card-title">Construcción</h5>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <div class="card text-center">
                             <div class="card-body">
                                 <i class="fas fa-tree fa-2x mb-2"></i>
-                                <h5 class="card-title">Servicios de Jardineria</h5>
+                                <h5 class="card-title"> Jardineria</h5>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <div class="card text-center">
                             <div class="card-body">
                                 <i class="fas fa-box-open fa-2x mb-2"></i>
@@ -55,7 +55,7 @@ export const Categorias = () => {
                         </div>
                     </div>
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <div class="card text-center">
                             <div class="card-body">
                                 <i class="fas fa-laptop fa-2x mb-2"></i>
@@ -64,7 +64,7 @@ export const Categorias = () => {
                         </div>
                     </div>
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <div class="card text-center">
                             <div class="card-body">
                                 <i class="fas fa-chart-bar fa-2x mb-2"></i>
@@ -73,7 +73,7 @@ export const Categorias = () => {
                         </div>
                     </div>
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <div class="card text-center">
                             <div class="card-body">
                                 <i class="fas fa-leaf fa-2x mb-2"></i>
@@ -82,7 +82,7 @@ export const Categorias = () => {
                         </div>
                     </div>
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <div class="card text-center">
                             <div class="card-body">
                                 <i class="fas fa-birthday-cake fa-2x mb-2"></i>
@@ -91,7 +91,7 @@ export const Categorias = () => {
                         </div>
                     </div>
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <div class="card text-center">
                             <div class="card-body">
                                 <i class="fas fa-graduation-cap fa-2x mb-2"></i>
