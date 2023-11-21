@@ -3,6 +3,7 @@ import "../../styles/home.css";
 import { Banner } from "../component/banner";
 import { Cards } from "../component/cards";
 import { Carrousel } from "../component/carrousel";
+import { Categorias } from "../component/categorias";
 
 export const Home = () => {
 
@@ -11,6 +12,7 @@ export const Home = () => {
 			<Banner />
 			<Cards />
 			<Carrousel />
+			<Categorias />
 		</>
 	);
 };
