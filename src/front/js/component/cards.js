@@ -13,7 +13,7 @@ export const Cards = () => {
 const Card = ({ buttonText }) => {
   return (
     <div className="card">
-      <button>{buttonText}</button>
+      <button className='button'>{buttonText}</button>
     </div>
   );
 }
