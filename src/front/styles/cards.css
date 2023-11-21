@@ -5,10 +5,12 @@
   }
   
   .card {
-    margin: 10px;
-    padding: 20px;
+    margin: 20px;
+    padding: 40px;
     border: 1px solid #ccc;
   }
+
+  
   
   button {
     background-color: #4CAF50;
