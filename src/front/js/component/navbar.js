@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logoUrl from "../../img/jrie_logo.jpg";
+import logoUrl from "./../../img/logo-jire.png";
 
 export const Navbar = () => {
 	return (
