@@ -14,19 +14,18 @@
   
   .button-card {
   background-color: #ffffff; 
-  color: #343a40;
-  border: 1px solid #343a40; 
-  border-radius: 5px;
-  padding: 30px 27px; 
+  color: #212529;
+  border: 1px solid #212529; 
+  font-size: 1.25rem;
+  border-radius: 0.3rem;
+  padding: 26px 27px; 
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s; 
   margin: 20px;
-  font-size: 25px;
   }
 
   
   .button-card:hover {
-    background-color: #1d2124; /* Color de fondo oscuro más claro al hacer hover */
-    color: #ffffff; /* Color del texto blanco al hacer hover */
+    background-color: #212529; 
+    color: #ffffff; 
   }
   
