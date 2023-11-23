@@ -4,20 +4,20 @@
     align-items: center;
   }
   
-  .button-card {
-  background-color: #ffffff; 
-  color: #212529;
-  border: 1px solid #212529; 
-  font-size: 1.25rem;
-  border-radius: 0.3rem;
-  padding: 26px 27px; 
-  cursor: pointer;
-  margin: 20px;
-  }
+.button-card {
+background-color: #ffffff; 
+color: #212529;
+border: 1px solid #212529; 
+font-size: 1.25rem;
+border-radius: 0.3rem;
+padding: 26px 27px; 
+cursor: pointer;
+margin: 20px;
+}
 
-  
-  .button-card:hover {
-    background-color: #212529; 
-    color: #ffffff; 
-  }
-  
+
+.button-card:hover {
+  background-color: #212529; 
+  color: #ffffff; 
+}
+
