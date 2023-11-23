@@ -4,7 +4,7 @@ import logoUrl from "./../../img/logo-jire.png";
 
 export const Navbar = () => {
 	return (
-		<div className="container my-2">
+		<div className="container sticky-top my-2">
 			<nav className="navbar navbar-inverse">
 				<div className="container-fluid">
 					<div className="navbar-logo">
