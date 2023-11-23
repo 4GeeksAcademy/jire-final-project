@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import logoUrl from "./../../img/logo-jire.png";
 
 export const Navbar = () => {
 	return (
-		<div className="container sticky-top my-2">
-			<nav className="navbar navbar-inverse">
+		<div className="container-fluid nav-container sticky-top mb-2">
+			<div className="container">
+			<nav className="navbar navbar-inverse nav-1">
 				<div className="container-fluid">
 					<div className="navbar-logo">
 						<a href="/"><img className="img-logo" src={logoUrl} /></a>
@@ -24,6 +24,7 @@ export const Navbar = () => {
 					</div>
 				</div>
 			</nav>
+		</div>
 		</div>
 	);
 };
