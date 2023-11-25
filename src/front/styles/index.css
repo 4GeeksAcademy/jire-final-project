@@ -3,21 +3,6 @@
 */
 /* navbar */
 .img-logo {
-    width: 180px;
+    width: 100px;
     height: 100px;
-}
-
-.nav-button {
-    width: 160px;
-}
-
-.nav-1{
-    padding: 0;
-    margin: 0;
-}
-
-
-.nav-container{
-    background-color: white;
-    width: 100%;
 }
