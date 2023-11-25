@@ -12,11 +12,23 @@ api = Blueprint('api', __name__)
 CORS(api)
 
 
-@api.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
-
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-    }
-
-    return jsonify(response_body), 200
+@api.route('/register', methods=['POST'])
+def register():
+    body = request.json
+    email = body.get('email')
+    password = body.get('password')
+    name = body.get('name')
+    lastname = body.get('lastname')
+    if email is None or password is None or name is None or lastname is None:
+        return jsonify({"error" :"porfavor ingrese valores validos"}), 400
+    userexists = User.query.filter_by(email=email).one_or_none()
+    if userexists:
+        return jsonify({"error":"user already exists"}), 400
+    user = User(email=email, password=password, name=name, lastname=lastname)
+    db.session.add(user)
+    try:
+        db.session.commit()
+        return jsonify({"message": "user created succesfully"}), 201
+    except Exception as error:
+        db.session.rollback()
+        return jsonify({"error": f"{error}"}), 500
