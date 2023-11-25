@@ -71,7 +71,7 @@ def add_user():
 
 # Create a token for Login
 @api.route('/token', methods=['POST'])
-def create_token():
+def generate_token():
     body = request.json
 
     email = check(body.get('email'))
