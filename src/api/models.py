@@ -16,6 +16,7 @@ class User(db.Model):
     salt = db.Column(db.String(180), unique=False, nullable=False)
     rol = db.Column(db.Enum(UserRol), nullable=False, default='general')
 
+
     def __repr__(self):
         return f'<User {self.email}>'
 

@@ -1,30 +1,23 @@
 import React from "react";
-import carrousel1 from '../../img/carrousel-1.jpg'
-import carrousel2 from '../../img/carrousel-2.jpg'
-import carrousel3 from '../../img/carrousel-3.jpg'
-import carrousel4 from '../../img/carrousel-4.jpg'
-import carrousel5 from '../../img/carrousel-5.jpg'
 import '../../styles/carrousel.css'
+import carrousel1 from '../../img/carrousel-1.png'
+import carrousel2 from '../../img/carrousel-2.png'
+import carrousel3 from '../../img/carrousel-3.png'
+
 
 export const Carrousel = () => {
     return (
         <>
-            <div id="carouselExample" className="carousel slide">
+            <div id="carouselExample" className="carousel slide my-3">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                    <img src={carrousel1} className="d-block w-100" alt="..." />
+                    <img src={carrousel1} className="d-block carrousel-img w-100" alt="..." />
                     </div>
                     <div className="carousel-item">
                         <img src={carrousel2} className="d-block w-100 " alt="..." />
                     </div>
                     <div className="carousel-item">
                         <img src={carrousel3} className="d-block w-100" alt="..." />
-                    </div>
-                    <div className="carousel-item">
-                        <img src={carrousel4} className="d-block w-100 " alt="..." />
-                    </div>
-                    <div className="carousel-item">
-                        <img src={carrousel5} className="d-block w-100 " alt="..." />
                     </div>
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -36,7 +29,6 @@ export const Carrousel = () => {
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>
-
         </>
     )
 }
