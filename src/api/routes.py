@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Ofertas, Solicitudes
 from api.utils import generate_sitemap, APIException
 from base64 import b64encode
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -67,8 +67,6 @@ def add_user():
             db.session.rollback()
             return jsonify({'message': f'error: {error.args}'}), 500
     
-    return jsonify('OK'), 200
-
 # Create a token for Login
 @api.route('/token', methods=['POST'])
 def generate_token():
@@ -96,7 +94,6 @@ def generate_token():
             return jsonify({'token': token}), 200
         else:
             return jsonify({'message': 'Token is not valid'}), 401
-    return jsonify('OK'), 200
 
 # Get all users using an admin Token
 @api.route('/user', methods=['GET'])
@@ -109,7 +106,6 @@ def get_users():
         return jsonify(list(map(lambda user: user.serialize(), users)))
     else:
         return jsonify({'message': 'Access denied'}), 403
-    return jsonify('OK'), 200
 
 # Get a user by user_id using an admin Token
 @api.route('/user/<int:user_id>', methods=['GET'])
@@ -124,4 +120,14 @@ def get_user(user_id=None):
         return jsonify(user.serialize()), 200
     else:
         return jsonify({'message': 'Access denied'}), 403
-    return jsonify('OK'), 200
+
+
+@api.route('/ofertas', methods=['GET'])
+def get_oferts():
+    ofertas = Ofertas.query.all() 
+    return jsonify(list(map(lambda of: of.serialize(), ofertas)))
+
+@api.route('/solicitudes', methods=['GET'])
+def get_solicitudes():
+    solicitudes = Solicitudes.query.all()
+    return jsonify(list(map(lambda sol: sol.serialize(), solicitudes)))
