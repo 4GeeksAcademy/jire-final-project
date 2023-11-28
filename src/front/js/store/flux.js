@@ -13,8 +13,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
-		},
+			],
+			ofertas:[]
+
+		}, 
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
@@ -46,7 +48,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
+			},
+			getOfertas: () =>{
+				fetch('${process.env.BACKEND_URL}api/ofertas')
+				.then(res => res.json())
 		}
 	};
 };
