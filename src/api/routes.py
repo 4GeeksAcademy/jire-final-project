@@ -38,6 +38,7 @@ def add_user():
     lastname = body.get('lastname')
     email = check(body.get('email'))
     password = body.get('password')
+    rol = body.get('rol')
 
     if name is None or len(name.strip()) == 0:
         return jsonify({'message': 'Enter a valid name'}), 400
@@ -58,7 +59,7 @@ def add_user():
     else:
         salt = b64encode(os.urandom(32)).decode("utf-8")
         password = set_password(password, salt)
-        user = User(name=name, lastname=lastname, email=email, password=password, salt=salt)
+        user = User(name=name, lastname=lastname, email=email, password=password, salt=salt, rol=rol)
         db.session.add(user)
         try:
             db.session.commit()
