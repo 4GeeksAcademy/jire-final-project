@@ -12,8 +12,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					title: "SECOND",
 					background: "white",
 					initial: "white"
-				}
-			]
+				},
+			],
+			solicitudes : []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -46,6 +47,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			getSolicitudes: () =>{
+				fetch(`${process.env.BACKEND_URL}/solicitudes`)
+				.then(res => res.json())
+				.then(data => setStore({
+					solicitudes : data
+				}))
 			}
 		}
 	};
