@@ -123,12 +123,32 @@ def get_user(user_id=None):
         return jsonify({'message': 'Access denied'}), 403
 
 
+#Get all offers
 @api.route('/ofertas', methods=['GET'])
-def get_oferts():
+def get_offers():
     ofertas = Ofertas.query.all() 
     return jsonify(list(map(lambda of: of.serialize(), ofertas)))
 
+#Get all requests
 @api.route('/solicitudes', methods=['GET'])
 def get_solicitudes():
     solicitudes = Solicitudes.query.all()
     return jsonify(list(map(lambda sol: sol.serialize(), solicitudes)))
+
+#Get one offer by id
+@api.route('/ofertas/<int:id>', methods=['GET'])
+def get_offer(id):
+    offer = Ofertas.query.get(id)
+    if offer is None:
+        return jsonify({"message":f"the offer {id} does not exists"}), 404
+    else:
+        return(offer.serialize())
+
+#Get one request by id
+@api.route('/solicitudes/<int:id>', methods=['GET'])
+def get_request(id):
+    request = Solicitudes.query.get(id)
+    if request is None:
+        return jsonify({"message":f"the request {id} does not exists"}), 404
+    else:
+        return(request.serialize())
