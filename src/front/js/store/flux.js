@@ -63,13 +63,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error)
 				}
-				getSolicitudes: () => {
-					fetch(`${process.env.BACKEND_URL}/solicitudes`)
-						.then(res => res.json())
-						.then(data => setStore({
-							solicitudes: data
-						}))
-				}
+			},
+			getSolicitudes: () => {
+				fetch(`${process.env.BACKEND_URL}/solicitudes`)
+					.then(res => res.json())
+					.then(data => setStore({
+						solicitudes: data
+					}))
 			}
 		}
 	};
