@@ -152,3 +152,46 @@ def get_request(id):
         return jsonify({"message":f"the request {id} does not exists"}), 404
     else:
         return(request.serialize())
+    
+#Post an offer
+@api.route('/post_offer', methods=['POST'])
+def post_offer():
+    body = request.json
+    title = body.get("title")
+    description = body.get("description")
+    location = body.get("location")
+
+    if title is None or description is None or location is None:
+        return jsonify({"message":"bad request"}), 400
+    
+
+    offer = Ofertas(title=title, description=description, location=location)
+    db.session.add(offer)
+
+    try:
+        db.session.commit()
+        return jsonify({"message":"offer created"}), 201
+    except Exception as error:
+        db.session.rollback()
+        return jsonify({"error":f"{error}"}), 500
+
+#post a request
+@api.route('/post_request', methods=['POST'])
+def post_request():
+    body = request.json
+    title = body.get("title")
+    description = body.get("description")
+    location = body.get("location")
+
+    if title is None or description is None or location is None:
+        return jsonify({"message":"bad request"}), 400
+
+    solicitud = Solicitudes(title=title, description=description, location=location)
+    db.session.add(solicitud)
+
+    try:
+        db.session.commit()
+        return jsonify({"message":"request created"}), 201
+    except Exception as error:
+        db.session.rollback()
+        return jsonify({"error":f"{error}"}), 500
