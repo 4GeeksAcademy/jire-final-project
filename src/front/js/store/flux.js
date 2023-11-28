@@ -46,6 +46,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			signup: async (user) => {
+				let store = getStore()
+				try {
+					let response = await fetch(`${process.env.BACKEND_URL}/register`, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(user)
+					})
+					return response.status
+
+				} catch (error) {
+					console.log(error)
+				}
 			}
 		}
 	};
