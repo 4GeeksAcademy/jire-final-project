@@ -30,6 +30,7 @@ export const Categorias = () => {
                             </div>
                         </a>
                     </div>))}
+                    
                 </div>
             </div>
         </>

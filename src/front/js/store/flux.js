@@ -14,6 +14,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				},
 			],
+			ofertas: [],
+
 			solicitudes: []
 		},
 		actions: {
@@ -24,13 +26,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getMessage: async () => {
 				try {
+				try {
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
 					const data = await resp.json()
 					setStore({ message: data.message })
 					// don't forget to return something, that is how the async resolves
 					return data;
-				} catch (error) {
+				}  catch  (error)  {
 					console.log("Error loading message from backend", error)
 				}
 			},
@@ -64,15 +67,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error)
 				}
 			},
-			getSolicitudes: () => {
+			getSolicitudes: () =>  {
 				fetch(`${process.env.BACKEND_URL}/solicitudes`)
 					.then(res => res.json())
 					.then(data => setStore({
 						solicitudes: data
 					}))
+			},
+			getOfertas: () => {
+				fetch('${process.env.BACKEND_URL}api/ofertas')
+					.then(res => res.json())
+					.then(data => setStore({
+						ofertas: data
+
+					}))
+
 			}
 		}
-	};
-};
+	}
+}
 
 export default getState;
