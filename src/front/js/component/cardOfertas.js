@@ -1,20 +1,31 @@
-import React,{useEffect, useState, useContext} from 'react';
-import "../../styles/ofertas.css";
+import React, { useContext } from 'react'
+import { Context } from '../store/appContext'
+import logo from "../../img/logo-jire.png"
+export const Cardoferta = () => {
 
-export const Ofertas =() => {
-    return(
+    const { store, actions } = useContext(Context)
+
+    return (
         <>
-
-            <div className="card" style={{ width: '18rem' }}>
-                <img src="..." className="card-img-top" alt="..." />
-                <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" className="btn btn-primary">Go somewhere</a>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col d-flex'>
+                        {store.ofertas.map((solicitud) => {
+                            return (
+                                <div className="card mx-3" key={solicitud.id} style={{ width: '18rem' }}>
+                                    <img src={logo} className="card-img-top" alt="..." />
+                                    <div className="card-body">
+                                        <h5 className="card-title">{solicitud.title}</h5>
+                                        <p className="card-text">{solicitud.description}</p>
+                                        <p className="card-text">Ubicación : {solicitud.location}</p>
+                                        <a href="#" className="btn btn-primary">Contactar</a>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
-
         </>
-
     )
 }

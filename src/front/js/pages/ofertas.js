@@ -1,20 +1,22 @@
-import React,{useEffect, useState, useContext} from 'react';
-import "../../styles/ofertas.css";
+import React, { useContext, useEffect, useState } from "react"
+import { Context } from "../store/appContext"
+import { Cardoferta } from "../component/cardOfertas"
 
-export const Ofertas =() => {
-    return(
+
+
+export const Ofertas = () => {
+    const { store, actions } = useContext(Context)
+    useEffect(() => {
+        actions.getOfertas()
+    }, [])
+
+    return (
         <>
-
-            <div className="card" style={{ width: '18rem' }}>
-                <img src="..." className="card-img-top" alt="..." />
-                <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" className="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-
+        <div className="text-center my-3">
+        <h1>Catalogo de Ofertas</h1>
+        </div>
+        <Cardoferta/>
+        
         </>
-
     )
 }

@@ -14,6 +14,7 @@ export const Home = () => {
 			<Cards />
 			<Carrousel />
 			<Categorias />
+			<Ofertas />
 		</>
 	);
 };
