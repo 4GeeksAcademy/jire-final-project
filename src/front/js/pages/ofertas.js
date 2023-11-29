@@ -16,7 +16,6 @@ export const Ofertas = () => {
         <h1>Catalogo de Ofertas</h1>
         </div>
         <Cardoferta/>
-        
         </>
     )
 }
