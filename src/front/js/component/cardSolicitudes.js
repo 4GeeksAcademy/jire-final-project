@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Context } from '../store/appContext'
 import logo from "../../img/logo-jire.png"
-export const Cardcatalogo = () => {
+export const CardSolicitudes = () => {
 
     const { store, actions } = useContext(Context)
 

@@ -20,12 +20,11 @@ export const Categorias = () => {
 
     return (
         <>
-            <div class="container mt-4">
-                <div class="row">
-
-                    {categorias.map((categoria)=> (<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 text-nowrap">
+            <div className="container mt-4">
+                <div className="row">
+                    {categorias.map((categoria, index)=> (<div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 text-nowrap">
                         <a href={categoria.link} className="card text-center btn btn-outline-dark" >
-                            <div class="card-body">
+                            <div className="card-body">
                                 <i className={"fas  fa-2x mb-2 "+ categoria.imagen}> </i>
                                 <h5 className="card-title text-nowrap"> {categoria.texto}</h5>
                             </div>

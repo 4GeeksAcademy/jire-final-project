@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { Context } from "../store/appContext"
-import { Cardcatalogo } from "../component/cardSolicitudes"
+import { CardSolicitudes } from "../component/cardSolicitudes"
 
 
 
@@ -15,7 +15,8 @@ export const Solicitudes = () => {
         <div className="text-center my-3">
         <h1>Catalogo de Solicitudes</h1>
         </div>
-        <Cardcatalogo/>
+        <CardSolicitudes/>
+        
         </>
     )
 }
