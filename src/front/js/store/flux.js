@@ -63,6 +63,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error)
 				}
+
+				Login: async (user) => {
+					try {
+					  const response = await fetch(`${process.env.BACKEND_URL}/login`, {
+						method: "POST",
+						headers: {
+						  "Content-Type": "application/json",
+						},
+						body: JSON.stringify(user),
+					  });
+			
+					  if (response.status === 200) {
+						const data = await response.json();
+						console.log(data.token); 
+					  } else {
+						console.error("Inicio de sesión fallido");
+					  }
+					} catch (error) {
+					  console.error("Error al procesar la solicitud de inicio de sesión", error);
+					}
+				  }
+
 				getSolicitudes: () => {
 					fetch(`${process.env.BACKEND_URL}/solicitudes`)
 						.then(res => res.json())
