@@ -77,7 +77,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(data => setStore({
 						ofertas: data
-
 					}))
 
 			}
