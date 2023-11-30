@@ -1,15 +1,15 @@
 import React from "react";
-import logoUrl from "./../../img/logo-jire.png";
+import { Link } from "react-router-dom";
+import logoUrl from "../../img/jrie_logo.jpg";
 
 export const Navbar = () => {
 	return (
-		<div className="container-fluid nav-container sticky-top mb-2">
-			<div className="container">
-			<nav className="navbar navbar-inverse nav-1">
+		<div className="container mt-2">
+			<nav className="navbar navbar-inverse">
 				<div className="container-fluid">
 					<div className="navbar-logo">
 						<a href="/"><img className="img-logo" src={logoUrl} /></a>
-					</div> 
+					</div>
 					<div>
 						<div className="navbar-buttons">
 							<button className="btn btn-outline-dark btn-lg nav-button" type="submit">
@@ -21,10 +21,10 @@ export const Navbar = () => {
 								Login
 							</button>
 						</div>
+
 					</div>
 				</div>
 			</nav>
-		</div>
 		</div>
 	);
 };
