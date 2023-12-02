@@ -1,13 +1,16 @@
 import React from 'react';
 import '../../styles/cards.css'
-import {Card} from './card'
+import { Link } from 'react-router-dom';
 
 export const Cards = () => {
   return (
-
       <div className="cards-container">
-        <Card buttonText="Encontrar un servicio" />
-        <Card buttonText="Ofrecer un servicio" />
+        <div className="card-buttons">
+        <Link to='/ofertas'><button className="button-card">Encontrar un servicio</button></Link>
+      </div>
+      <div className="card-buttons">
+        <Link to='/solicitudes'><button className="button-card">Ofrecer un servicio</button></Link>
+      </div>
       </div>
     );
  

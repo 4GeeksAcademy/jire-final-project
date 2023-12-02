@@ -6,6 +6,7 @@ import { Carrousel } from "../component/carrousel";
 import { Categorias } from "../component/categorias";
 import { Ofertas } from "../pages/ofertas";
 
+
 export const Home = () => {
 
 	return (

@@ -79,7 +79,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 						ofertas: data
 					}))
 
-			}
+			},
+			login: async (user) => {
+				try {
+					const response = await fetch(`${process.env.BACKEND_URL}/login`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(user),
+					});
+					
+					if (response.status === 200) {
+					const data = await response.json();
+					localStorage.setItem("token", data.token)
+					return response.status
+					} else {
+					console.error("Inicio de sesión fallido");
+					}
+				} catch (error) {
+					console.error("Error al procesar la solicitud de inicio de sesión", error);
+				}
+			},
 		}
 	}
 }

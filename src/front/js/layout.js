@@ -9,10 +9,12 @@ import { Single } from "./pages/single";
 import { Solicitudes } from "./pages/solicitudes.js";
 import { Ofertas } from "./pages/ofertas.js"
 import injectContext from "./store/appContext";
+import Login from "./pages/Login.jsx";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import Signup from "./component/Signup.jsx";
+import Signup from "./pages/Signup.jsx";
+
 
 //create your first component
 const Layout = () => {
@@ -35,6 +37,7 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<Solicitudes/>} path="/solicitudes"/>
                         <Route element={<Ofertas/>} path="/ofertas"/>
+                        <Route element={<Login/>} path="/login"/>
                     </Routes>
                     <Footer />
                 </ScrollToTop>

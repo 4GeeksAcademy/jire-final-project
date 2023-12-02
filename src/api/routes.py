@@ -69,32 +69,25 @@ def add_user():
             return jsonify({'message': f'error: {error.args}'}), 500
     
 # Create a token for Login
-@api.route('/token', methods=['POST'])
-def generate_token():
-    body = request.json
+@api.route('/login', methods=['POST'])
+def login():
+    try:
+        data = request.json
+        email = data.get('email')
+        password = data.get('password')
+        user = User.query.filter_by(email=email).one_or_none()
 
-    email = check(body.get('email'))
-    password = body.get('password')
+        if user is None or not check_password_hash(user.password, f"{password}{user.salt}"):
+            return jsonify({'message': 'Invalid email or password'}), 401
 
-    if email is None or len(email.strip()) == 0:
-        return jsonify({'message': 'Enter a valid email'}), 400
-    
-    if password is None or len(password.strip()) == 0:
-        return jsonify({'message': 'Enter a valid password'}), 400
+        token = create_access_token(identity={
+            'email': user.email,
+            'rol': user.rol.value
+        })
+        return jsonify({'token': token}), 200
 
-    user = User.query.filter_by(email=email).one_or_none()
-    
-    if user is None:
-        return jsonify({'message':'account not found'}), 400
-    else:
-        if check_password(user.password, password, user.salt):
-            token = create_access_token(identity={
-                'email': user.email,
-                'rol': user.rol.value
-            })
-            return jsonify({'token': token}), 200
-        else:
-            return jsonify({'message': 'Token is not valid'}), 401
+    except Exception as e:
+        return jsonify({'message': str(e)}), 500
 
 # Get all users using an admin Token
 @api.route('/user', methods=['GET'])
