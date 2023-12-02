@@ -1,0 +1,112 @@
+[
+    {
+      "ocupation": "Desarrollador",
+      "experience": 3,
+      "skills": "React, Flask, SQL",
+      "skills_level": "intermediate",
+      "certificate": "Fullstack Developer",
+      "institution": "Coding Academy Barcelona",
+      "languages": "Spanish, English",
+      "language_level": "expert",
+      "user_id": 1
+    },
+    {
+      "ocupation": "Plomero",
+      "experience": 5,
+      "skills": "Reparaciones, Instalaciones",
+      "skills_level": "expert",
+      "certificate": "Plomero Certificado",
+      "institution": "Instituto de Plomería Córdoba",
+      "languages": "Spanish",
+      "language_level": "basic",
+      "user_id": 2
+    },
+    {
+      "ocupation": "Desarrollador Full-Stack",
+      "experience": 2,
+      "skills": "React, Node.js, MongoDB",
+      "skills_level": "intermediate",
+      "certificate": "Desarrollador Full-Stack Certificado",
+      "institution": "Tech Institute Guadalajara",
+      "languages": "Spanish, English",
+      "language_level": "intermediate",
+      "user_id": 3
+    },
+    {
+      "ocupation": "Artista Creativo",
+      "experience": 7,
+      "skills": "Pintura, Escultura",
+      "skills_level": "expert",
+      "certificate": "Artista Creativo Certificado",
+      "institution": "Arts Academy Bogotá",
+      "languages": "Spanish",
+      "language_level": "basic",
+      "user_id": 4
+    },
+    {
+      "ocupation": "Emprendedora",
+      "experience": 4,
+      "skills": "Gestión de Negocios, Marketing",
+      "skills_level": "intermediate",
+      "certificate": "Emprendedora Certificada",
+      "institution": "Entrepreneurship School Lima",
+      "languages": "Spanish, English",
+      "language_level": "intermediate",
+      "user_id": 5
+    },
+    {
+      "ocupation": "Chef",
+      "experience": 6,
+      "skills": "Cocina Gourmet, Presentación de Platos",
+      "skills_level": "expert",
+      "certificate": "Chef Profesional",
+      "institution": "Culinary Institute Santiago",
+      "languages": "Spanish, English",
+      "language_level": "intermediate",
+      "user_id": 6
+    },
+    {
+      "ocupation": "Profesora Fitness",
+      "experience": 10,
+      "skills": "Entrenamiento Personalizado, Clases en línea",
+      "skills_level": "intermediate",
+      "certificate": "Certificación Fitness",
+      "institution": "Fitness Academy Quito",
+      "languages": "Spanish",
+      "language_level": "basic",
+      "user_id": 7
+    },
+    {
+      "ocupation": "Diseñador Gráfico",
+      "experience": 5,
+      "skills": "Diseño Creativo, Branding",
+      "skills_level": "expert",
+      "certificate": "Diseñador Gráfico Certificado",
+      "institution": "Creative Design Caracas",
+      "languages": "Spanish, English",
+      "language_level": "intermediate",
+      "user_id": 8
+    },
+    {
+      "ocupation": "Música",
+      "experience": 8,
+      "skills": "Piano, Violín",
+      "skills_level": "expert",
+      "certificate": "Músico Profesional",
+      "institution": "Music Academy Montevideo",
+      "languages": "Spanish",
+      "language_level": "basic",
+      "user_id": 9
+    },
+    {
+      "ocupation": "Ingeniero Innovador",
+      "experience": 6,
+      "skills": "Innovación Tecnológica, Desarrollo de Prototipos",
+      "skills_level": "expert",
+      "certificate": "Ingeniero Innovador Certificado",
+      "institution": "Innovation Institute Asunción",
+      "languages": "Spanish, English",
+      "language_level": "intermediate",
+      "user_id": 10
+    }
+  ]
