@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Ofertas, Solicitudes
+from api.models import db, User, Ofertas, Solicitudes, Personal_info, Professional_info
 from api.utils import generate_sitemap, APIException
 from base64 import b64encode
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -11,8 +11,11 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 import os
 import re
+import json
 
 api = Blueprint('api', __name__)
+
+user_path = os.path.join(os.path.dirname(__file__), "users.json")
 
 # werkzeug security
 def set_password(password, salt):
@@ -28,6 +31,32 @@ def check(email):
         return email
     else:
         return None
+
+@api.route("/user-population", methods=["GET"])
+def user_population():
+    with open(user_path, "r") as file:
+        data = json.load(file)
+        file.close
+
+        for user in data:
+            salt = b64encode(os.urandom(32)).decode("utf-8")
+            password = set_password(user["password"], salt)
+            user = User(
+                name=user["name"],
+                lastname=user["lastname"],
+                email=user["email"],
+                password=password,
+                salt=salt,
+            )
+            db.session.add(user)
+            try:
+                db.session.commit()
+            except Exception as error:
+                print("error:", error.args)
+                return jsonify("rodo fallo"), 500
+        
+    return jsonify("todo funciono"), 200
+
 
 # Register a new user
 @api.route('/register', methods=['POST'])
@@ -145,46 +174,131 @@ def get_request(id):
         return jsonify({"message":f"the request {id} does not exists"}), 404
     else:
         return(request.serialize())
+
+
+@api.route('/personal_info/<int:userid>', methods=['POST'])
+def personal_info(userid):
+    user = User.query.get(userid)
+    if user is None:
+        return jsonify({"message":"this user does not exists"}),400
+
+    body = request.json
+    nickname = body.get("nickname")
+    avatar = body.get("avatar")
+    phone = body.get("phone")
+    address = body.get("address")
+    country = body.get("country")
+    state = body.get("state")
+    city = body.get("city")
+    description = body.get("description")
+    user_id = userid
+
+    personal = Personal_info(
+    nickname=nickname, 
+    avatar=avatar, phone=phone,
+    address=address, country=country,
+    state=state, city=city,
+    description=description, 
+    user_id=user_id)
+
+    db.session.add(personal)
+
+    try:
+        db.session.commit()
+        return jsonify({"message": "info added"}), 201
+    except Exception as error:
+        db.session.rollback()
+        return jsonify({"error":f"{error.args}"})
+
+
+
+@api.route('/professional_info/<int:userid>', methods=['POST'])
+def professional_info(userid):
+    user = User.query.get(userid)
+    if user is None:
+        return jsonify({"message":"this user does not exists"}),400
+    
+    body = request.json
+    ocupation = body.get("ocupation")
+    experience = body.get("experience")
+    skills = body.get("skills")
+    skills_level = body.get("skills_level")
+    certificate = body.get("certificate")
+    institution = body.get("institution")
+    languages = body.get("languages")
+    language_level = body.get("language_level")
+
+    professional_info = Professional_info(
+        ocupation=ocupation,
+        experience=experience,
+        skills=skills,
+        skills_level=skills_level,
+        certificate=certificate,
+        institution=institution,
+        languages=languages,
+        language_level= language_level,
+        user_id = userid
+    )
+
+    db.session.add(professional_info)
+    try:
+        db.session.commit()
+        return jsonify({"message":"info added"}), 201
+    except Exception as error:
+        db.session.rollback()
+        return jsonify({"error":f"{error.args}"})
+
+
+
+
+
+
+
+
+
+
+
+
     
 #Post an offer
-@api.route('/post_offer', methods=['POST'])
-def post_offer():
-    body = request.json
-    title = body.get("title")
-    description = body.get("description")
-    location = body.get("location")
+# @api.route('/post_offer', methods=['POST'])
+# def post_offer():
+#     body = request.json
+#     title = body.get("title")
+#     description = body.get("description")
+#     location = body.get("location")
 
-    if title is None or description is None or location is None:
-        return jsonify({"message":"bad request"}), 400
+#     if title is None or description is None or location is None:
+#         return jsonify({"message":"bad request"}), 400
     
 
-    offer = Ofertas(title=title, description=description, location=location)
-    db.session.add(offer)
+#     offer = Ofertas(title=title, description=description, location=location)
+#     db.session.add(offer)
 
-    try:
-        db.session.commit()
-        return jsonify({"message":"offer created"}), 201
-    except Exception as error:
-        db.session.rollback()
-        return jsonify({"error":f"{error}"}), 500
+#     try:
+#         db.session.commit()
+#         return jsonify({"message":"offer created"}), 201
+#     except Exception as error:
+#         db.session.rollback()
+#         return jsonify({"error":f"{error}"}), 500
 
-#post a request
-@api.route('/post_request', methods=['POST'])
-def post_request():
-    body = request.json
-    title = body.get("title")
-    description = body.get("description")
-    location = body.get("location")
+# #post a request
+# @api.route('/post_request', methods=['POST'])
+# def post_request():
+#     body = request.json
+#     title = body.get("title")
+#     description = body.get("description")
+#     location = body.get("location")
 
-    if title is None or description is None or location is None:
-        return jsonify({"message":"bad request"}), 400
+#     if title is None or description is None or location is None:
+#         return jsonify({"message":"bad request"}), 400
 
-    solicitud = Solicitudes(title=title, description=description, location=location)
-    db.session.add(solicitud)
+#     solicitud = Solicitudes(title=title, description=description, location=location)
+#     db.session.add(solicitud)
 
-    try:
-        db.session.commit()
-        return jsonify({"message":"request created"}), 201
-    except Exception as error:
-        db.session.rollback()
-        return jsonify({"error":f"{error}"}), 500
+#     try:
+#         db.session.commit()
+#         return jsonify({"message":"request created"}), 201
+#     except Exception as error:
+#         db.session.rollback()
+#         return jsonify({"error":f"{error}"}), 500
