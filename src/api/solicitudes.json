@@ -1,0 +1,113 @@
+[
+    {
+      "service": "in_place",
+      "category": "Construcción y mantenimiento",
+      "title": "Electricista Residencial",
+      "description": "Se busca electricista con experiencia en instalaciones residenciales. Trabajo para remodelación de vivienda en Miraflores.",
+      "address": "Calle Los Pinos 123",
+      "country": "Perú",
+      "state": "Lima",
+      "city": "Miraflores",
+      "images": "instalacion_electrica.jpg"
+    },
+    {
+      "service": "remote",
+      "category": "Tecnología y desarrollo",
+      "title": "Analista de Datos",
+      "description": "Empresa busca analista de datos para análisis y visualización de datos. Trabajo remoto con reuniones semanales en Viña del Mar.",
+      "address": "Avenida Libertad 456",
+      "country": "Chile",
+      "state": "Valparaíso",
+      "city": "Viña del Mar",
+      "images": "analisis_datos.png"
+    },
+    {
+      "service": "in_place",
+      "category": "Servicios Profesionales",
+      "title": "Abogado Laboral",
+      "description": "Despacho de abogados busca un abogado especializado en derecho laboral. Oficina en San Borja.",
+      "address": "Jirón Los Abogados 789",
+      "country": "Perú",
+      "state": "Lima",
+      "city": "San Borja",
+      "images": "abogado.jpg"
+    },
+    {
+      "service": "remote",
+      "category": "Diseño y Creatividad",
+      "title": "Diseñador UX/UI",
+      "description": "Startup tecnológica busca diseñador UX/UI para mejorar la experiencia de usuario. Trabajo completamente remoto.",
+      "address": "Calle Innovación 234",
+      "country": "Argentina",
+      "state": "Buenos Aires",
+      "city": "Palermo",
+      "images": "diseno_ux_ui.jpg"
+    },
+    {
+      "service": "in_place",
+      "category": "Salud y Bienestar",
+      "title": "Nutricionista",
+      "description": "Se necesita nutricionista para consultorio en San Isidro. Experiencia en asesoramiento nutricional personalizado.",
+      "address": "Avenida Saludable 567",
+      "country": "Perú",
+      "state": "Lima",
+      "city": "San Isidro",
+      "images": "nutricionista.jpg"
+    },
+    {
+      "service": "remote",
+      "category": "Tecnología y desarrollo",
+      "title": "Desarrollador Full Stack",
+      "description": "Empresa de desarrollo web busca desarrollador Full Stack para proyectos a largo plazo. Trabajo desde casa.",
+      "address": "Calle de la Tecnología 890",
+      "country": "México",
+      "state": "Ciudad de México",
+      "city": "Polanco",
+      "images": "full_stack_dev.jpg"
+    },
+    {
+      "service": "in_place",
+      "category": "Construcción y mantenimiento",
+      "title": "Arquitecto",
+      "description": "Estudio de arquitectura busca arquitecto con experiencia en diseño y planificación urbana. Oficina en Santiago de Surco.",
+      "address": "Avenida Arquitectónica 345",
+      "country": "Perú",
+      "state": "Lima",
+      "city": "Santiago de Surco",
+      "images": "arquitecto.jpg"
+    },
+    {
+      "service": "remote",
+      "category": "Marketing y Ventas",
+      "title": "Especialista en Redes Sociales",
+      "description": "Empresa de marketing digital busca especialista en redes sociales para gestionar cuentas de clientes. Trabajo a distancia.",
+      "address": "Calle del Marketing 678",
+      "country": "Colombia",
+      "state": "Bogotá",
+      "city": "Chapinero",
+      "images": "redes_sociales.jpg"
+    },
+    {
+      "service": "in_place",
+      "category": "Salud y Bienestar",
+      "title": "Psicólogo Clínico",
+      "description": "Centro de salud mental busca psicólogo clínico para terapia individual y grupal. Consultorio en San Miguel.",
+      "address": "Avenida de la Salud Mental 901",
+      "country": "Perú",
+      "state": "Lima",
+      "city": "San Miguel",
+      "images": "psicologo.jpg"
+    },
+    {
+      "service": "remote",
+      "category": "Diseño y Creatividad",
+      "title": "Ilustrador Digital",
+      "description": "Ilustrador digital con experiencia en diseño creativo. Proyecto de ilustración para aplicación móvil. Trabajo a distancia.",
+      "address": "Calle de la Creatividad 123",
+      "country": "España",
+      "state": "Madrid",
+      "city": "Chamberí",
+      "images": "ilustrador_digital.jpg"
+    }
+  ]
+  
