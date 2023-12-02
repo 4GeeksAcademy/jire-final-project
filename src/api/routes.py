@@ -18,6 +18,7 @@ api = Blueprint('api', __name__)
 user_path = os.path.join(os.path.dirname(__file__), "users.json")
 personalinfo_path = os.path.join(os.path.dirname(__file__), "personal_info.json")
 professionalinfo_path = os.path.join(os.path.dirname(__file__), "professional_info.json")
+solicitudes_path = os.path.join(os.path.dirname(__file__), "solicitudes.json")
 
 # werkzeug security
 def set_password(password, salt):
@@ -62,7 +63,8 @@ def user_population():
         
     return jsonify("todo funciono"), 200
 
-#add personal info for the 10 users
+#Note: first, populate user to the db
+#add personal info for the 10 users 
 @api.route("/personal-population", methods=["GET"])
 def personal_population():
     with open(personalinfo_path, "r") as file:
@@ -90,6 +92,7 @@ def personal_population():
         
     return jsonify("todo funciono"), 200
 
+#Note: first, populate user to the db
 #add professional info for 10 users:
 @api.route("/professional-population", methods=["GET"])
 def professional_population():
@@ -118,6 +121,33 @@ def professional_population():
         
     return jsonify("todo funciono"), 200
 
+#add 10 records to the table Solicitudes
+@api.route("/solicitudes-population", methods=["GET"])
+def solicitudes_population():
+    with open(solicitudes_path, "r") as file:
+        data = json.load(file)
+        file.close
+
+        for sols in data:
+            sols = Solicitudes(
+                service=sols["service"],
+                category=sols["category"],
+                title=sols["title"],
+                description=sols["description"],
+                address=sols["address"],
+                country=sols["country"],
+                state=sols["state"],
+                city=sols["city"],
+                images=sols["images"]
+            )
+            db.session.add(sols)
+            try:
+                db.session.commit()
+            except Exception as error:
+                print("error:", error.args)
+                return jsonify("todo fallo"), 500
+        
+    return jsonify("todo funciono"), 200
 
 # Register a new user
 @api.route('/register', methods=['POST'])
