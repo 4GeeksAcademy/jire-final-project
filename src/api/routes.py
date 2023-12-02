@@ -16,6 +16,8 @@ import json
 api = Blueprint('api', __name__)
 
 user_path = os.path.join(os.path.dirname(__file__), "users.json")
+personalinfo_path = os.path.join(os.path.dirname(__file__), "personal_info.json")
+professionalinfo_path = os.path.join(os.path.dirname(__file__), "professional_info.json")
 
 # werkzeug security
 def set_password(password, salt):
@@ -32,6 +34,8 @@ def check(email):
     else:
         return None
 
+
+#add 10 users to the db
 @api.route("/user-population", methods=["GET"])
 def user_population():
     with open(user_path, "r") as file:
@@ -42,6 +46,7 @@ def user_population():
             salt = b64encode(os.urandom(32)).decode("utf-8")
             password = set_password(user["password"], salt)
             user = User(
+                id=user["id"],
                 name=user["name"],
                 lastname=user["lastname"],
                 email=user["email"],
@@ -49,6 +54,62 @@ def user_population():
                 salt=salt,
             )
             db.session.add(user)
+            try:
+                db.session.commit()
+            except Exception as error:
+                print("error:", error.args)
+                return jsonify("rodo fallo"), 500
+        
+    return jsonify("todo funciono"), 200
+
+#add personal info for the 10 users
+@api.route("/personal-population", methods=["GET"])
+def personal_population():
+    with open(personalinfo_path, "r") as file:
+        data = json.load(file)
+        file.close
+
+        for pers in data:
+            pers = Personal_info(
+                nickname=pers["nickname"],
+                avatar=pers["avatar"],
+                phone=pers["phone"],
+                address=pers["address"],
+                country=pers["country"],
+                state=pers["state"],
+                city=pers["city"],
+                description=pers["description"],
+                user_id=pers["user_id"]
+            )
+            db.session.add(pers)
+            try:
+                db.session.commit()
+            except Exception as error:
+                print("error:", error.args)
+                return jsonify("rodo fallo"), 500
+        
+    return jsonify("todo funciono"), 200
+
+#add professional info for 10 users:
+@api.route("/professional-population", methods=["GET"])
+def professional_population():
+    with open(professionalinfo_path, "r") as file:
+        data = json.load(file)
+        file.close
+        
+        for prof in data:
+            prof = Professional_info(
+                ocupation=prof["ocupation"],
+                experience=prof["experience"],
+                skills=prof["skills"],
+                skills_level=prof["skills_level"],
+                certificate=prof["certificate"],
+                institution=prof["institution"],
+                languages=prof["languages"],
+                language_level=prof["language_level"],
+                user_id=prof["user_id"]
+            )
+            db.session.add(prof)
             try:
                 db.session.commit()
             except Exception as error:

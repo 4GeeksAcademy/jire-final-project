@@ -1,0 +1,112 @@
+[
+    {
+        "nickname":"ramidev123",
+        "avatar":"avatar.jpg",
+        "phone":"35423535",
+        "address":"calle uno 123",
+        "country":"Spain",
+        "state":"Catalunya",
+        "city":"Barcelona",
+        "description":"Desarrolador web profesional con React, Flask y SQL",
+        "user_id":1
+    },
+    {
+        "nickname":"plomerojesus2",
+        "avatar":"avatar.jpg",
+        "phone":"354123123",
+        "address":"calle dos 234",
+        "country":"Argentina",
+        "state":"Cordoba",
+        "city":"Cordoba",
+        "description":"Experimentado plomero a domicilio",
+        "user_id":2
+    },
+    {
+        "nickname": "programadoraMaria",
+        "avatar": "maria_avatar.jpg",
+        "phone": "3567890123",
+        "address": "Avenida Principal 456",
+        "country": "Mexico",
+        "state": "Jalisco",
+        "city": "Guadalajara",
+        "description": "Desarrolladora full-stack apasionada por la tecnología",
+        "user_id": 3
+      },
+      {
+        "nickname": "artistaCarlos",
+        "avatar": "creativo_avatar.jpg",
+        "phone": "3323456789",
+        "address": "Calle Creativa 789",
+        "country": "Colombia",
+        "state": "Bogotá",
+        "city": "Bogotá",
+        "description": "Artista creativo especializado en pintura y escultura",
+        "user_id": 4
+      },
+      {
+        "nickname": "emprendedoraLaura",
+        "avatar": "juan_avatar.jpg",
+        "phone": "3109876543",
+        "address": "Emprendimiento Street 321",
+        "country": "Peru",
+        "state": "Lima",
+        "city": "Lima",
+        "description": "Emprendedora apasionada por los negocios",
+        "user_id": 5
+      },
+      {
+        "nickname": "chefJavier",
+        "avatar": "chef_avatar.jpg",
+        "phone": "3334445555",
+        "address": "Calle de la Gastronomía 789",
+        "country": "Chile",
+        "state": "Santiago",
+        "city": "Santiago",
+        "description": "Chef especializado en cocina gourmet",
+        "user_id": 6
+      },
+      {
+        "nickname": "ProfeFitnessAna",
+        "avatar": "fitness_avatar.jpg",
+        "phone": "3498765432",
+        "address": "Ruta de Aventuras 987",
+        "country": "Ecuador",
+        "state": "Quito",
+        "city": "Quito",
+        "description": "Profesora fitness por meet o zoom",
+        "user_id": 7
+      },
+      {
+        "nickname": "diseñadorGabriel",
+        "avatar": "creativa_avatar.jpg",
+        "phone": "3123456789",
+        "address": "Diseño Creativo 456",
+        "country": "Venezuela",
+        "state": "Caracas",
+        "city": "Caracas",
+        "description": "Diseñadoro gráfico con enfoque en creatividad",
+        "user_id": 8
+      },
+      {
+        "nickname": "IsabelMusica",
+        "avatar": "musica_avatar.jpg",
+        "phone": "3335557777",
+        "address": "Calle de la Música 654",
+        "country": "Uruguay",
+        "state": "Montevideo",
+        "city": "Montevideo",
+        "description": "Música talentosa y apasionada por la música clásica",
+        "user_id": 9
+      },
+      {
+        "nickname": "MartinIngeniero",
+        "avatar": "ingeniero_avatar.jpg",
+        "phone": "3777888999",
+        "address": "Innovación Avenue 876",
+        "country": "Paraguay",
+        "state": "Asunción",
+        "city": "Asunción",
+        "description": "Ingeniero innovador con experiencia en tecnologías emergentes",
+        "user_id": 10
+      }
+]

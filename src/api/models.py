@@ -105,7 +105,7 @@ class Personal_info(db.Model):
 class Professional_info(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     ocupation = db.Column(db.String(80), nullable=False, unique=False)
-    experience = db.Column(db.Integer, nullable=False, unique=True, default=1)
+    experience = db.Column(db.Integer, nullable=False, unique=False, default=1)
     skills = db.Column(db.String(100), nullable=False, unique=False)
     skills_level = db.Column(db.Enum(skills_level), nullable=False, unique=False, default="basic")
     certificate = db.Column(db.String(150), nullable=True, unique=False)
