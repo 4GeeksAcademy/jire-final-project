@@ -19,6 +19,7 @@ user_path = os.path.join(os.path.dirname(__file__), "users.json")
 personalinfo_path = os.path.join(os.path.dirname(__file__), "personal_info.json")
 professionalinfo_path = os.path.join(os.path.dirname(__file__), "professional_info.json")
 solicitudes_path = os.path.join(os.path.dirname(__file__), "solicitudes.json")
+ofertas_path = os.path.join(os.path.dirname(__file__), "ofertas.json")
 
 # werkzeug security
 def set_password(password, salt):
@@ -148,6 +149,34 @@ def solicitudes_population():
                 return jsonify("todo fallo"), 500
         
     return jsonify("todo funciono"), 200
+
+@api.route("/ofertas-population", methods=["GET"])
+def ofertas_population():
+    with open(ofertas_path, "r") as file:
+        data = json.load(file)
+        file.close
+
+        for offer in data:
+            offers = Ofertas(
+                service=offer["service"],
+                category=offer["category"],
+                title=offer["title"],
+                description=offer["description"],
+                address=offer["address"],
+                country=offer["country"],
+                state=offer["state"],
+                city=offer["city"],
+                images=offer["images"]
+            )
+            db.session.add(offers)
+            try:
+                db.session.commit()
+            except Exception as error:
+                print("error:", error.args)
+                return jsonify("todo fallo"), 500
+        
+    return jsonify("todo funciono"), 200
+
 
 # Register a new user
 @api.route('/register', methods=['POST'])

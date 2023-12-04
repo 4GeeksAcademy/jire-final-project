@@ -52,14 +52,27 @@ class Ofertas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(150), unique=False, nullable=False)
     description = db.Column(db.Text, unique=False, nullable=False)
-    location = db.Column(db.String(80), unique=False, nullable=False)
+    address = db.Column(db.String(80), unique=False, nullable=False)
+    country= db.Column(db.String(30), nullable=False, unique=False)
+    state = db.Column(db.String(40), nullable=False, unique=False)
+    city = db.Column(db.String(40), nullable=False, unique=False)
+    category = db.Column(db.String(70), unique=False, nullable=False)
+    service = db.Column(db.Enum(service_type), nullable=False, unique=False, default="in place")
+    images = db.Column(db.String(250), nullable=True, unique=False)
 
     def serialize(self):
         return{
             "id": self.id,
             "title": self.title,
             "description" : self.description,
-            "location": self.location
+            "location": self.location,
+            "category" : self.category,
+            "address" : self.adress,
+            "country" : self.country,
+            "state": self.state,
+            "city": self.city,
+            "service_type": self.service_type,
+            "images": self.images
         }
 
 
