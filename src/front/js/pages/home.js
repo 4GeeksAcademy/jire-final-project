@@ -4,7 +4,6 @@ import { Banner } from "../component/banner";
 import { Cards } from "../component/cards";
 import { Carrousel } from "../component/carrousel";
 import { Categorias } from "../component/categorias";
-import { Ofertas } from "../pages/ofertas";
 
 
 export const Home = () => {
@@ -15,7 +14,6 @@ export const Home = () => {
 			<Cards />
 			<Carrousel />
 			<Categorias />
-			<Ofertas />
 		</>
 	);
 };

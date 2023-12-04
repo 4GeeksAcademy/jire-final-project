@@ -65,13 +65,12 @@ class Ofertas(db.Model):
             "id": self.id,
             "title": self.title,
             "description" : self.description,
-            "location": self.location,
             "category" : self.category,
-            "address" : self.adress,
+            "address" : self.address,
             "country" : self.country,
             "state": self.state,
             "city": self.city,
-            "service_type": self.service_type,
+            "service": self.service.value,
             "images": self.images
         }
 
@@ -93,13 +92,12 @@ class Solicitudes(db.Model):
             "id": self.id,
             "title": self.title,
             "description" : self.description,
-            "location": self.location,
             "category" : self.category,
-            "address" : self.adress,
+            "address" : self.address,
             "country" : self.country,
             "state": self.state,
             "city": self.city,
-            "service_type": self.service_type,
+            "service": self.service.value,
             "images": self.images
         }
 

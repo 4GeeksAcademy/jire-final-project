@@ -9,7 +9,7 @@ export const Navbar = () => {
 				<nav className="navbar navbar-inverse nav-1">
 					<div className="container-fluid">
 						<div className="navbar-logo">
-							<a href="/"><img className="img-logo" src={logoUrl} /></a>
+							<Link to="/"><img className="img-logo" src={logoUrl} /></Link>
 						</div>
 						<div>
 							<div className="navbar-buttons">

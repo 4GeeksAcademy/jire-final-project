@@ -277,25 +277,6 @@ def get_solicitudes():
     solicitudes = Solicitudes.query.all()
     return jsonify(list(map(lambda sol: sol.serialize(), solicitudes)))
 
-#Get one offer by id
-@api.route('/ofertas/<int:id>', methods=['GET'])
-def get_offer(id):
-    offer = Ofertas.query.get(id)
-    if offer is None:
-        return jsonify({"message":f"the offer {id} does not exists"}), 404
-    else:
-        return(offer.serialize())
-
-#Get one request by id
-@api.route('/solicitudes/<int:id>', methods=['GET'])
-def get_request(id):
-    request = Solicitudes.query.get(id)
-    if request is None:
-        return jsonify({"message":f"the request {id} does not exists"}), 404
-    else:
-        return(request.serialize())
-
-
 @api.route('/personal_info/<int:userid>', methods=['POST'])
 def personal_info(userid):
     user = User.query.get(userid)
@@ -368,57 +349,3 @@ def professional_info(userid):
         db.session.rollback()
         return jsonify({"error":f"{error.args}"})
 
-
-
-
-
-
-
-
-
-
-
-
-    
-#Post an offer
-# @api.route('/post_offer', methods=['POST'])
-# def post_offer():
-#     body = request.json
-#     title = body.get("title")
-#     description = body.get("description")
-#     location = body.get("location")
-
-#     if title is None or description is None or location is None:
-#         return jsonify({"message":"bad request"}), 400
-    
-
-#     offer = Ofertas(title=title, description=description, location=location)
-#     db.session.add(offer)
-
-#     try:
-#         db.session.commit()
-#         return jsonify({"message":"offer created"}), 201
-#     except Exception as error:
-#         db.session.rollback()
-#         return jsonify({"error":f"{error}"}), 500
-
-# #post a request
-# @api.route('/post_request', methods=['POST'])
-# def post_request():
-#     body = request.json
-#     title = body.get("title")
-#     description = body.get("description")
-#     location = body.get("location")
-
-#     if title is None or description is None or location is None:
-#         return jsonify({"message":"bad request"}), 400
-
-#     solicitud = Solicitudes(title=title, description=description, location=location)
-#     db.session.add(solicitud)
-
-#     try:
-#         db.session.commit()
-#         return jsonify({"message":"request created"}), 201
-#     except Exception as error:
-#         db.session.rollback()
-#         return jsonify({"error":f"{error}"}), 500
