@@ -15,8 +15,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 			],
 			ofertas: [],
-
-			solicitudes: []
+			solicitudes: [],
+			token: localStorage.getItem("token") || null,
+			user: localStorage.getItem("user") || null,
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -96,11 +97,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return response.status
 					} else {
 					console.error("Inicio de sesión fallido");
+
 					}
 				} catch (error) {
 					console.error("Error al procesar la solicitud de inicio de sesión", error);
 				}
 			},
+			logout : () =>{
+				localStorage.removeItem("token")
+				setStore({
+					token:null
+				})
+			}
 		}
 	}
 }

@@ -32,6 +32,7 @@ const Login = () => {
       if (responseStatus === 200) {
         // Inicio de sesión exitoso, redirige a la página deseada
         navigate("/");
+        localStorage.setItem("user", user.email)
       }
       // } else {
       //   // Manejar el caso de inicio de sesión fallido

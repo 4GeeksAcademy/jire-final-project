@@ -1,8 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import logoUrl from "./../../img/logo-jire.png";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+
+	const {store, actions} = useContext(Context)
+
+	const handleLogout = () =>{
+		actions.logout()
+	}
+
 	return (
 		<div className="container-fluid nav-container sticky-top mb-2">
 			<div className="container">
@@ -12,7 +20,8 @@ export const Navbar = () => {
 							<Link to="/"><img className="img-logo" src={logoUrl} /></Link>
 						</div>
 						<div>
-							<div className="navbar-buttons">
+							{store.token == null? (<>
+								<div className="navbar-buttons">
 								<Link to='/register'><button className="btn btn-outline-dark btn-lg nav-button" type="submit">
 									<span><i className="fas fa-user-plus me-2"></i></span>
 									Sign Up
@@ -24,6 +33,18 @@ export const Navbar = () => {
 									</button>
 								</Link>
 							</div>
+							</>) : <>
+							<button className="btn btn-outline-dark btn-lg ms-2 nav-button" onClick={handleLogout} type="submit">
+										<span><i className="fa-solid fa-right-from-bracket"></i></span>
+										Logout
+									</button>
+							{store.user == null?<></>: <button className="btn btn-outline-dark btn-lg ms-2 nav-button">
+							<i className="fa-solid fa-user"></i>
+								Perfil
+							</button> }
+							
+							</>}
+							
 						</div>
 					</div>
 				</nav>
