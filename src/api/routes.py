@@ -358,7 +358,6 @@ def get_profile():
     user_id = get_jwt_identity().get("id")
     personal_profile = Personal_info.query.filter_by(user_id = user_id).one_or_none()
     user_info = User.query.filter_by(id=user_id).one_or_none()
-    professional_profile = Professional_info.query.filter_by(user_id=user_id)
-    print(personal_profile.serialize(), user_info.serialize(), professional_profile.serialize())
-    return jsonify([])
+    professional_profile = Professional_info.query.filter_by(user_id=user_id).one_or_none()
+    return jsonify( user_info.serialize(), personal_profile.serialize(), professional_profile.serialize())
 
