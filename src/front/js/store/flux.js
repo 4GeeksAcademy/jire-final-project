@@ -17,7 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			ofertas: [],
 			solicitudes: [],
 			token: localStorage.getItem("token") || null,
-			user: localStorage.getItem("user") || null,
+			error: null
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -94,10 +94,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (response.status === 200) {
 					const data = await response.json();
 					localStorage.setItem("token", data.token)
+					setStore({
+						token : data.token
+					})
 					return response.status
 					} else {
 					console.error("Inicio de sesión fallido");
-
+					setStore({
+						error: "Email o contraseña incorrecta"
+					})
 					}
 				} catch (error) {
 					console.error("Error al procesar la solicitud de inicio de sesión", error);
@@ -108,6 +113,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({
 					token:null
 				})
+			},
+			profile : (token) =>{
+				fetch('https://obscure-doodle-x5rgw7vx6rcv4v5-3001.app.github.dev/api/profile')
 			}
 		}
 	}

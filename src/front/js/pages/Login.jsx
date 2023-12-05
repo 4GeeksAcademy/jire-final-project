@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 const Login = () => {
-  const { actions } = useContext(Context);
+  const { actions, store } = useContext(Context);
   const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
-  const [rememberMe, setRememberMe] = useState(false); 
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleChange = (event) => {
     setUser({
@@ -32,7 +32,6 @@ const Login = () => {
       if (responseStatus === 200) {
         // Inicio de sesión exitoso, redirige a la página deseada
         navigate("/");
-        localStorage.setItem("user", user.email)
       }
       // } else {
       //   // Manejar el caso de inicio de sesión fallido
@@ -47,6 +46,9 @@ const Login = () => {
     <>
       <div className="container">
         <h1>Bienvenido</h1>
+        {store.error != null ? <div className="alert alert-danger" role="alert">
+          {store.error}
+        </div> : <></>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <input

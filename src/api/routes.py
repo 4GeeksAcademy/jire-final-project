@@ -231,7 +231,8 @@ def login():
 
         token = create_access_token(identity={
             'email': user.email,
-            'rol': user.rol.value
+            'rol': user.rol.value,
+            'id': user.id
         })
         return jsonify({'token': token}), 200
 
@@ -348,4 +349,16 @@ def professional_info(userid):
     except Exception as error:
         db.session.rollback()
         return jsonify({"error":f"{error.args}"})
+    
+
+
+@api.route('/profile', methods=['GET'])
+@jwt_required()
+def get_profile():
+    user_id = get_jwt_identity().get("id")
+    personal_profile = Personal_info.query.filter_by(user_id = user_id).one_or_none()
+    user_info = User.query.filter_by(id=user_id).one_or_none()
+    professional_profile = Professional_info.query.filter_by(user_id=user_id)
+    print(personal_profile.serialize(), user_info.serialize(), professional_profile.serialize())
+    return jsonify([])
 
