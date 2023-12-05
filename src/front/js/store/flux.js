@@ -17,7 +17,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			ofertas: [],
 			solicitudes: [],
 			token: localStorage.getItem("token") || null,
-			error: null
+			error: null,
+			profile: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -115,7 +116,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 			profile : (token) =>{
-				fetch('https://obscure-doodle-x5rgw7vx6rcv4v5-3001.app.github.dev/api/profile')
+				fetch(`${process.env.BACKEND_URL}/profile`,{
+					headers:{Authorization: `Bearer ${token}`}
+				})
+				.then(res => res.json())
+				.then(data => setStore({
+					profile : data
+				}))
 			}
 		}
 	}
