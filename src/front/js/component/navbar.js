@@ -38,11 +38,10 @@ export const Navbar = () => {
 										<span><i className="fa-solid fa-right-from-bracket"></i></span>
 										Logout
 									</button>
-							{store.user == null?<></>: <button className="btn btn-outline-dark btn-lg ms-2 nav-button">
+							 <button className="btn btn-outline-dark btn-lg ms-2 nav-button">
 							<i className="fa-solid fa-user"></i>
 								Perfil
-							</button> }
-							
+							</button>
 							</>}
 							
 						</div>

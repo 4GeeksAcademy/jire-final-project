@@ -113,6 +113,20 @@ class Personal_info(db.Model):
     description = db.Column(db.Text, nullable=False, unique=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
+    def serialize(self):
+        return{
+            "nickname": self.nickname,
+            "avatar": self.avatar,
+            "phone": self.phone,
+            "address": self.address,
+            "country": self.country,
+            "state": self.state,
+            "city": self.city,
+            "description": self.description,
+        }
+
+
+
 class Professional_info(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     ocupation = db.Column(db.String(80), nullable=False, unique=False)
@@ -124,7 +138,26 @@ class Professional_info(db.Model):
     languages = db.Column(db.String(20), nullable=False, unique=False)
     language_level = db.Column(db.Enum(language_level), nullable=False, unique=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    def serialize(self):
+        return{
+            "ocupation": self.ocupation,
+            "experience": self.experience,
+            "skills": self.skills,
+            "skills_level": self.skills_level.value,
+            "certificate": self.certificate,
+            "institution": self.institution,
+            "languages": self.languages,
+            "languages_level": self.language_level.value,
+        }
 
+
+
+class services(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    solicitud_id = db.Column(db.Integer, db.ForeignKey('solicitudes.id'))
+    oferta_id = db.Column(db.Integer, db.ForeignKey('ofertas.id'))
+    date = db.Column(db.String(90), nullable=False, unique=False)
 
 
 
