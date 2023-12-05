@@ -3,6 +3,7 @@ import logoUrl from "./../../img/logo-jire.png";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
+
 export const Navbar = () => {
 
 	const {store, actions} = useContext(Context)

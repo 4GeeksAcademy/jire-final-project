@@ -359,5 +359,17 @@ def get_profile():
     personal_profile = Personal_info.query.filter_by(user_id = user_id).one_or_none()
     user_info = User.query.filter_by(id=user_id).one_or_none()
     professional_profile = Professional_info.query.filter_by(user_id=user_id).one_or_none()
-    return jsonify( user_info.serialize(), personal_profile.serialize(), professional_profile.serialize())
+
+    if personal_profile is None:
+        pers_prof = "No personal info"
+    else:
+        pers_prof = personal_profile.serialize()
+    
+    if professional_profile is None:
+        prof = "No professional info"
+    else:
+        prof = professional_profile.serialize()
+
+
+    return jsonify(user_info.serialize(), pers_prof, prof)
 
