@@ -115,14 +115,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					token:null
 				})
 			},
-			profile : (token) =>{
+			profile : () =>{
+				let store = getStore()
 				fetch(`${process.env.BACKEND_URL}/profile`,{
-					headers:{Authorization: `Bearer ${token}`}
+					headers:{Authorization: `Bearer ${store.token}`}
 				})
 				.then(res => res.json())
 				.then(data => setStore({
 					profile : data
 				}))
+			},
+			addSolicitud : async() =>{
+				// try {
+				// 	let  response =  await fetch(`${process.env.BACKEND_URL}/addsolicitud`, {
+				// 		method : "POST",
+				// 		headers:{
+				// 			"Content-Type"
+				// 		}
+				// 	})
+				// } catch (error) {
+					
+				// }
 			}
 		}
 	}

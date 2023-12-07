@@ -27,20 +27,23 @@ const AddSolicitud = () => {
     }
 
     const handleSubmit = async (event)=>{
-        console.log(solicitud)
-        event.preventDefault()
-        let result = await actions.addSolicitud(solicitud)
-        console.log(result)
-        if (result == 400) {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Information not valid"
-            })
-        }
-        if (result == 200) {
-            navigate("/solicitudes")
-        }
+        // event.preventDefault()
+
+        // let result = await actions.addSolicitud(formData)
+        // console.log(result)
+
+
+
+        // if (result == 400) {
+        //     Swal.fire({
+        //         icon: "error",
+        //         title: "Oops...",
+        //         text: "Information not valid"
+        //     })
+        // }
+        // if (result == 200) {
+        //     navigate("/solicitudes")
+        // }
     }
 
     const handleImage = (event)=>{
@@ -140,11 +143,13 @@ const AddSolicitud = () => {
                         <select 
                             className="form-select"
                             value={solicitud.service}
+                            name="service"
                             onChange={handleChange}>
-                                <option selected>Seleccione una opcion</option>
+                                <option >Seleccione una opcion</option>
                                 <option value="remote">Remote</option>
                                 <option value="in_place">In place</option>
                         </select>
+
                     </div>
                     <div className="form-group m-3">
                         <label>Adjunte una imagen que ayude a clarificar su proyecto</label>
@@ -154,6 +159,9 @@ const AddSolicitud = () => {
                             name="images"
                             onChange={handleImage}
                         />
+                    </div>
+                    <div className="form-group m-3">
+                        <button onSubmit={handleSubmit} className="btn btn-primary">Crear Solicitud</button>
                     </div>
 
                 </form>
