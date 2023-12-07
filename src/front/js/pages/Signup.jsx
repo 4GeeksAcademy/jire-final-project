@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react"
 import { Context } from "../store/appContext"
 import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
+import '../../styles/singup.css'
+
 
 const Signup = () => {
 
@@ -42,7 +44,7 @@ const Signup = () => {
         <>
             <div className="container">
                 <h1>Registrate</h1>
-                <form onSubmit={handleSubmit}>
+                <form className="singup-form" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <input
                             type="text"

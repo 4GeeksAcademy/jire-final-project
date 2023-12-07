@@ -1,16 +1,17 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import ResetPassword from "./resetPassword";
+import '../../styles/login.css'
 
 const Login = () => {
-  const { actions } = useContext(Context);
+  const { actions, store } = useContext(Context);
   const navigate = useNavigate();
+  const [rememberMe, setRememberMe] = useState(false);
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-
-  const [rememberMe, setRememberMe] = useState(false); 
 
   const handleChange = (event) => {
     setUser({
@@ -30,24 +31,34 @@ const Login = () => {
       const responseStatus = await actions.login(user);
 
       if (responseStatus === 200) {
-        // Inicio de sesión exitoso, redirige a la página deseada
+        // Inicio de sesión exitoso
         navigate("/");
-        localStorage.setItem("user", user.email)
+        localStorage.setItem("user", user.email);
       }
-      // } else {
-      //   // Manejar el caso de inicio de sesión fallido
-      //   console.error("Inicio de sesión fallido");
-      // }
     } catch (error) {
       console.error("Error al procesar la solicitud de inicio de sesión", error);
     }
+  };
+
+  const handleForgotPassword = () => {
+    // Aquí puedes llamar a la acción de resetPassword
+    actions.resetPassword(user.email).then((status) => {
+      if (status === 200) {
+        // Restablecimiento de contraseña exitoso
+        console.log("Solicitud de restablecimiento de contraseña exitosa");
+        navigate("/login")
+      } else {
+        // Manejar el caso en que el restablecimiento de contraseña no sea exitoso
+        console.error("Solicitud de restablecimiento de contraseña fallida");
+      }
+    });
   };
 
   return (
     <>
       <div className="container">
         <h1>Bienvenido</h1>
-        <form onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <input
               type="email"
@@ -70,7 +81,6 @@ const Login = () => {
               required
             />
           </div>
-
           <div className="form-check mt-4">
             <input
               type="checkbox"
@@ -79,11 +89,14 @@ const Login = () => {
               checked={rememberMe}
               onChange={handleRememberMeChange}
             />
-            <label className="form-check-label" htmlFor="rememberMe">
+            <div class="checkbox-container">
+            <label className="remember-me" for="remember">
               Recuérdame
             </label>
+            <Link to="/forgot-password">Recuperar Contraseña</Link>
           </div>
-
+          </div>
+          
           <button type="submit" className="btn btn-primary mt-4">
             Iniciar sesión
           </button>
@@ -93,4 +106,4 @@ const Login = () => {
   );
 };
 
-export default Login
+export default Login;

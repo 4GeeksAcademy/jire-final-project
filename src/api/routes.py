@@ -9,6 +9,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
+from flask import request, jsonify
+from datetime import datetime, timedelta
+import secrets
 import os
 import re
 import json
@@ -234,6 +237,29 @@ def login():
             'rol': user.rol.value
         })
         return jsonify({'token': token}), 200
+
+    except Exception as e:
+        return jsonify({'message': str(e)}), 500
+    
+
+@api.route('/reset-password', methods=['POST'])
+def reset_password():
+    try:
+        data = request.json
+        email = data.get('email')
+        new_password = data.get('newPassword')
+
+        # Verificar si el correo electrónico existe en la base de datos
+        user = User.query.filter_by(email=email).one_or_none()
+
+        if user:
+            # Actualizar la contraseña del usuario
+            user.password = set_password(new_password, user.salt)
+            db.session.commit()
+
+            return jsonify({'message': 'Contraseña restablecida con éxito'}), 200
+        else:
+            return jsonify({'message': 'Usuario no encontrado'}), 404
 
     except Exception as e:
         return jsonify({'message': str(e)}), 500

@@ -10,6 +10,7 @@ import { Solicitudes } from "./pages/solicitudes.js";
 import { Ofertas } from "./pages/ofertas.js"
 import injectContext from "./store/appContext";
 import Login from "./pages/Login.jsx";
+import ResetPassword from "./pages/resetPassword.js"
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -38,6 +39,7 @@ const Layout = () => {
                         <Route element={<Solicitudes/>} path="/solicitudes"/>
                         <Route element={<Ofertas/>} path="/ofertas"/>
                         <Route element={<Login/>} path="/login"/>
+                        <Route element={<ResetPassword/>} path="/forgot-password"/>
                     </Routes>
                     <Footer />
                 </ScrollToTop>
