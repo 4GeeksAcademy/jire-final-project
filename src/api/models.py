@@ -33,6 +33,7 @@ class User(db.Model):
     rol = db.Column(db.Enum(UserRol), nullable=False, default='general')
     personal_info = db.relationship('Personal_info', backref='User')
     professional_info = db.relationship('Professional_info', backref='User')
+    solicitudes = db.relationship('Solicitudes', backref='User')
 
 
     def __repr__(self):
@@ -84,8 +85,10 @@ class Solicitudes(db.Model):
     state = db.Column(db.String(40), nullable=False, unique=False)
     city = db.Column(db.String(40), nullable=False, unique=False)
     category = db.Column(db.String(70), unique=False, nullable=False)
-    service = db.Column(db.Enum(service_type), nullable=False, unique=False, default="in place")
+    service = db.Column(db.Enum(service_type), nullable=False, unique=False, default="in_place")
     images = db.Column(db.String(250), nullable=True, unique=False)
+    public_image_id = db.Column(db.String(100), unique=False, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def serialize(self):
         return{
@@ -152,7 +155,7 @@ class Professional_info(db.Model):
 
 
 
-class services(db.Model):
+class Services(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     solicitud_id = db.Column(db.Integer, db.ForeignKey('solicitudes.id'))
