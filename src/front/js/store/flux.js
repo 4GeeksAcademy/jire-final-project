@@ -125,17 +125,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					profile : data
 				}))
 			},
-			addSolicitud : async() =>{
-				// try {
-				// 	let  response =  await fetch(`${process.env.BACKEND_URL}/addsolicitud`, {
-				// 		method : "POST",
-				// 		headers:{
-				// 			"Content-Type"
-				// 		}
-				// 	})
-				// } catch (error) {
-					
-				// }
+			addSolicitud : async(solicitud) =>{
+				let store = getStore()
+				try {
+					let  response =  await fetch(`${process.env.BACKEND_URL}/addsolicitud`, {
+						headers:{
+							Authorization: `Bearer ${store.token}`
+						},
+						method : "POST",
+						body: solicitud
+					})
+					if (response.status == 200){
+						console.log("solicitud agregada")
+					}else{
+						console.log("no se agrego")
+					}
+					return response.status
+				} catch (error) {
+					console.log(error);
+				}
 			}
 		}
 	}
