@@ -53,9 +53,7 @@ const Signup = () => {
                             name="name"
                             value={user.name}
                             onChange={handleChange}
-                          />
-                    </div>
-                    <div className="form-group">
+                        />
                         <input
                             type="text"
                             className="form-control"
