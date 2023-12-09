@@ -17,7 +17,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			ofertas: [],
 			solicitudes: [],
 			token: localStorage.getItem("token") || null,
-			user: localStorage.getItem("user") || null,
+			error: null,
+			profile: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -99,10 +100,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						token: data.token,
 						user: data.user,
 					});
+            
 					return response.status
 					} else {
 					console.error("Inicio de sesión fallido");
-
+					setStore({
+						error: "Email o contraseña incorrecta"
+					})
 					}
 				} catch (error) {
 					console.error("Error al procesar la solicitud de inicio de sesión", error);
@@ -138,6 +142,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({
 					token:null
 				})
+			},
+			profile : () =>{
+				let store = getStore()
+				fetch(`${process.env.BACKEND_URL}/profile`,{
+					headers:{Authorization: `Bearer ${store.token}`}
+				})
+				.then(res => res.json())
+				.then(data => setStore({
+					profile : data
+				}))
+			},
+			addSolicitud : async(solicitud) =>{
+				let store = getStore()
+				try {
+					let  response =  await fetch(`${process.env.BACKEND_URL}/addsolicitud`, {
+						headers:{
+							Authorization: `Bearer ${store.token}`
+						},
+						method : "POST",
+						body: solicitud
+					})
+					if (response.status == 200){
+						console.log("solicitud agregada")
+					}else{
+						console.log("no se agrego")
+					}
+					return response.status
+				} catch (error) {
+					console.log(error);
+				}
 			}
 		}
 	}

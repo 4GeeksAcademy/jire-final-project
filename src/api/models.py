@@ -33,6 +33,7 @@ class User(db.Model):
     rol = db.Column(db.Enum(UserRol), nullable=False, default='general')
     personal_info = db.relationship('Personal_info', backref='User')
     professional_info = db.relationship('Professional_info', backref='User')
+    solicitudes = db.relationship('Solicitudes', backref='User')
 
 
     def __repr__(self):
@@ -84,8 +85,10 @@ class Solicitudes(db.Model):
     state = db.Column(db.String(40), nullable=False, unique=False)
     city = db.Column(db.String(40), nullable=False, unique=False)
     category = db.Column(db.String(70), unique=False, nullable=False)
-    service = db.Column(db.Enum(service_type), nullable=False, unique=False, default="in place")
+    service = db.Column(db.Enum(service_type), nullable=False, unique=False, default="in_place")
     images = db.Column(db.String(250), nullable=True, unique=False)
+    public_image_id = db.Column(db.String(100), unique=False, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def serialize(self):
         return{
@@ -113,6 +116,20 @@ class Personal_info(db.Model):
     description = db.Column(db.Text, nullable=False, unique=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
+    def serialize(self):
+        return{
+            "nickname": self.nickname,
+            "avatar": self.avatar,
+            "phone": self.phone,
+            "address": self.address,
+            "country": self.country,
+            "state": self.state,
+            "city": self.city,
+            "description": self.description,
+        }
+
+
+
 class Professional_info(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     ocupation = db.Column(db.String(80), nullable=False, unique=False)
@@ -124,7 +141,26 @@ class Professional_info(db.Model):
     languages = db.Column(db.String(20), nullable=False, unique=False)
     language_level = db.Column(db.Enum(language_level), nullable=False, unique=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    def serialize(self):
+        return{
+            "ocupation": self.ocupation,
+            "experience": self.experience,
+            "skills": self.skills,
+            "skills_level": self.skills_level.value,
+            "certificate": self.certificate,
+            "institution": self.institution,
+            "languages": self.languages,
+            "languages_level": self.language_level.value,
+        }
 
+
+
+class Services(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    solicitud_id = db.Column(db.Integer, db.ForeignKey('solicitudes.id'))
+    oferta_id = db.Column(db.Integer, db.ForeignKey('ofertas.id'))
+    date = db.Column(db.String(90), nullable=False, unique=False)
 
 
 

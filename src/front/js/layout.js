@@ -8,6 +8,10 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { Solicitudes } from "./pages/solicitudes.js";
 import { Ofertas } from "./pages/ofertas.js"
+
+import AddSolicitud from "./pages/AddSolicitud.jsx"
+import {Profile} from "./pages/profile.js"
+import { EditProfile } from "./pages/editProfile.js";
 import injectContext from "./store/appContext";
 import Login from "./pages/Login.jsx";
 import ResetPassword from "./pages/resetPassword.js"
@@ -37,7 +41,10 @@ const Layout = () => {
                         <Route element={<Signup />} path="/register" />
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<Solicitudes/>} path="/solicitudes"/>
+                        <Route element={<AddSolicitud/>} path="/addsolicitud"/>
                         <Route element={<Ofertas/>} path="/ofertas"/>
+                        <Route element={<Profile/>} path="/profile"/>
+                        <Route element={<EditProfile/>} path="/editprofile"/>
                         <Route element={<Login/>} path="/login"/>
                         <Route element={<ResetPassword/>} path="/forgot-password"/>
                     </Routes>

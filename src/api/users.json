@@ -3,70 +3,60 @@
         "name": "Ramiro",
         "lastname": "Correa",
         "email": "ramicorrea@gmail.com",
-        "password": "12345Rami",
-        "id":1
+        "password": "12345Rami"
     },
     {
         "name": "Jesus",
         "lastname": "Santisteban",
         "email": "jesussantis@gmail.com",
-        "password": "12345Jesus",
-        "id":2
+        "password": "12345Jesus"
     },
     {
         "name": "María",
         "lastname": "González",
         "email": "mariagonzalez@gmail.com",
-        "password": "12345Maria",
-        "id":3
+        "password": "12345Maria"
     },
     {
         "name": "Carlos",
         "lastname": "Martínez",
         "email": "carlosmartinez@gmail.com",
-        "password": "12345Carlos",
-        "id":4
+        "password": "12345Carlos"
     },
     {
         "name": "Laura",
         "lastname": "López",
         "email": "lauralopez@gmail.com",
-        "password": "12345Laura",
-        "id":5
+        "password": "12345Laura"
     },
     {
         "name": "Javier",
         "lastname": "Ramírez",
         "email": "javierramirez@gmail.com",
-        "password": "12345Javier",
-        "id":6
+        "password": "12345Javier"
     },
     {
         "name": "Ana",
         "lastname": "Rodríguez",
         "email": "anarodriguez@gmail.com",
-        "password": "12345Ana",
-        "id":7
+        "password": "12345Ana"
     },
     {
         "name": "Gabriel",
         "lastname": "Pérez",
         "email": "gabrielperez@gmail.com",
-        "password": "12345Gabriel",
-        "id":8
+        "password": "12345Gabriel"
       },
       {
         "name": "Isabel",
         "lastname": "Díaz",
         "email": "isabeldiaz@gmail.com",
-        "password": "12345Isabel",
-        "id":9
+        "password": "12345Isabel"
       },
       {
         "name": "Martín",
         "lastname": "Hernández",
         "email": "martinhernandez@gmail.com",
-        "password": "12345Martin",
-        "id":10
+        "password": "12345Martin"
       }
 ]

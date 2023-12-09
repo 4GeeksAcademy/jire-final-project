@@ -9,12 +9,15 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
+
 from flask import request, jsonify
 from datetime import datetime, timedelta
 import secrets
+import cloudinary.uploader as uploader
 import os
 import re
 import json
+
 
 api = Blueprint('api', __name__)
 
@@ -51,7 +54,6 @@ def user_population():
             salt = b64encode(os.urandom(32)).decode("utf-8")
             password = set_password(user["password"], salt)
             user = User(
-                id=user["id"],
                 name=user["name"],
                 lastname=user["lastname"],
                 email=user["email"],
@@ -217,6 +219,7 @@ def add_user():
             db.session.commit()
             return jsonify({'message': 'account has been created successfully'}), 200
         except Exception as error:
+            print(error)
             db.session.rollback()
             return jsonify({'message': f'error: {error.args}'}), 500
     
@@ -234,7 +237,8 @@ def login():
 
         token = create_access_token(identity={
             'email': user.email,
-            'rol': user.rol.value
+            'rol': user.rol.value,
+            'id': user.id
         })
         return jsonify({'token': token}), 200
 
@@ -374,4 +378,66 @@ def professional_info(userid):
     except Exception as error:
         db.session.rollback()
         return jsonify({"error":f"{error.args}"})
+    
+
+
+@api.route('/profile', methods=['GET'])
+@jwt_required()
+def get_profile():
+    user_id = get_jwt_identity().get("id")
+    personal_profile = Personal_info.query.filter_by(user_id = user_id).one_or_none()
+    user_info = User.query.filter_by(id=user_id).one_or_none()
+    professional_profile = Professional_info.query.filter_by(user_id=user_id).one_or_none()
+
+    if personal_profile is None:
+        pers_prof = "No personal info"
+    else:
+        pers_prof = personal_profile.serialize()
+    
+    if professional_profile is None:
+        prof = "No professional info"
+    else:
+        prof = professional_profile.serialize()
+
+
+    return jsonify(user_info.serialize(), pers_prof, prof )
+
+#add solicitud
+@api.route('/addsolicitud', methods=['POST'])
+@jwt_required()
+def post_solicitud():
+    body_form = request.form
+    body_file = request.files
+    user_id = get_jwt_identity().get("id")
+    personal_profile = Personal_info.query.filter_by(user_id=user_id).one_or_none()
+
+
+    title = body_form.get('title')
+    description = body_form.get('description')
+    address = personal_profile.address
+    country = personal_profile.country
+    state = personal_profile.state
+    city = personal_profile.city
+    category = body_form.get('category')
+    service = body_form.get('service')
+    images = body_file.get('images')
+
+    result_image = uploader.upload(body_file.get("images"))
+    images = result_image.get("secure_url")
+    public_id = result_image.get("public_id")
+
+    solicitud = Solicitudes(title=title, description=description, address=address,
+                            country=country, state=state, category=category,
+                            city=city, service=service,
+                            images=images, user_id=user_id, public_image_id=public_id)
+    db.session.add(solicitud)
+
+    try:
+        db.session.commit()
+        return jsonify({"message":"solicitud agregada"})
+    except Exception as error:
+        db.session.rollback()
+        return jsonify({"error": f"{error}"})
+
+   
 

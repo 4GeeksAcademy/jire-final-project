@@ -3,6 +3,7 @@ import logoUrl from "./../../img/logo-jire.png";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
+
 export const Navbar = () => {
 
 	const {store, actions} = useContext(Context)
@@ -38,11 +39,12 @@ export const Navbar = () => {
 										<span><i className="fa-solid fa-right-from-bracket"></i></span>
 										Logout
 									</button>
-							{store.user == null?<></>: <button className="btn btn-outline-dark btn-lg ms-2 nav-button">
+							<Link to="profile">
+							<button className="btn btn-outline-dark btn-lg ms-2 nav-button">
 							<i className="fa-solid fa-user"></i>
 								Perfil
-							</button> }
-							
+							</button>
+							</Link>
 							</>}
 							
 						</div>
