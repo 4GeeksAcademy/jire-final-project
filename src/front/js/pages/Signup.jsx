@@ -1,7 +1,9 @@
 import React, { useState, useContext } from "react"
 import { Context } from "../store/appContext"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
+import '../../styles/signup.css'
+
 
 const Signup = () => {
 
@@ -42,7 +44,7 @@ const Signup = () => {
         <>
             <div className="container">
                 <h1>Registrate</h1>
-                <form onSubmit={handleSubmit}>
+                <form className="signup-form" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <input
                             type="text"
@@ -51,9 +53,7 @@ const Signup = () => {
                             name="name"
                             value={user.name}
                             onChange={handleChange}
-                            />
-                    </div>
-                    <div className="form-group">
+                        />
                         <input
                             type="text"
                             className="form-control"
@@ -61,13 +61,13 @@ const Signup = () => {
                             name="lastname"
                             value={user.lastname}
                             onChange={handleChange}
-                            />
+                        />
                     </div>
                     <div className="form-group mt-4">
                         <input
                             type="email"
                             className="form-control"
-                            placeholder="email"
+                            placeholder="Email"
                             name="email"
                             value={user.email}
                             onChange={handleChange}
@@ -77,14 +77,24 @@ const Signup = () => {
                         <input
                             type="password"
                             className="form-control"
-                            placeholder="password"
+                            placeholder="Password"
                             name="password"
                             value={user.password}
                             onChange={handleChange}
                         />
                     </div>
-
-                    <button type="submit" className="btn btn-primary mt-4">Signup</button>
+                    <div className="text-signup">
+                        <p>
+                            Al registrarte, aceptas nuestras condiciones de uso y politicas de privacidad
+                        </p>
+                    </div>
+                    <button type="submit" className="btn btn-primary mt-4 signup-button">Signup</button>
+                    <div className="text2-signup">
+                        <p>
+                            ¿Ya tienes una cuenta?
+                        </p>
+                        <Link to="/login">Inicia sesión</Link>
+                    </div>
                 </form>
             </div>
         </>

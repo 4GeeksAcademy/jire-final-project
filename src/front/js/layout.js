@@ -15,6 +15,7 @@ import { EditProfile } from "./pages/editProfile.js";
 import DetailSolicitud from "./pages/DetailSolicitud.jsx";
 import injectContext from "./store/appContext";
 import Login from "./pages/Login.jsx";
+import ResetPassword from "./pages/resetPassword.js"
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -47,6 +48,7 @@ const Layout = () => {
                         <Route element={<EditProfile/>} path="/editprofile"/>
                         <Route element={<DetailSolicitud/>} path="/detailsolicitud"/>
                         <Route element={<Login/>} path="/login"/>
+                        <Route element={<ResetPassword/>} path="/forgot-password"/>
                     </Routes>
                     <Footer />
                 </ScrollToTop>
