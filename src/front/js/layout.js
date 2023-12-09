@@ -12,6 +12,7 @@ import { Ofertas } from "./pages/ofertas.js"
 import AddSolicitud from "./pages/AddSolicitud.jsx"
 import {Profile} from "./pages/profile.js"
 import { EditProfile } from "./pages/editProfile.js";
+import DetailSolicitud from "./pages/DetailSolicitud.jsx";
 import injectContext from "./store/appContext";
 import Login from "./pages/Login.jsx";
 
@@ -44,6 +45,7 @@ const Layout = () => {
                         <Route element={<Ofertas/>} path="/ofertas"/>
                         <Route element={<Profile/>} path="/profile"/>
                         <Route element={<EditProfile/>} path="/editprofile"/>
+                        <Route element={<DetailSolicitud/>} path="/detailsolicitud"/>
                         <Route element={<Login/>} path="/login"/>
                     </Routes>
                     <Footer />

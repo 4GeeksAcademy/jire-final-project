@@ -8,7 +8,8 @@
       "country": "Perú",
       "state": "Lima",
       "city": "Miraflores",
-      "images": "instalacion_electrica.jpg"
+      "images": null,
+      "user_id": 1
     },
     {
       "service": "remote",
@@ -19,7 +20,8 @@
       "country": "Chile",
       "state": "Valparaíso",
       "city": "Viña del Mar",
-      "images": "analisis_datos.png"
+      "images": null,
+      "user_id": 2
     },
     {
       "service": "in_place",
@@ -30,7 +32,8 @@
       "country": "Perú",
       "state": "Lima",
       "city": "San Borja",
-      "images": "abogado.jpg"
+      "images": null,
+      "user_id": 3
     },
     {
       "service": "remote",
@@ -41,7 +44,8 @@
       "country": "Argentina",
       "state": "Buenos Aires",
       "city": "Palermo",
-      "images": "diseno_ux_ui.jpg"
+      "images": null,
+      "user_id": 4
     },
     {
       "service": "in_place",
@@ -52,7 +56,8 @@
       "country": "Perú",
       "state": "Lima",
       "city": "San Isidro",
-      "images": "nutricionista.jpg"
+      "images": null,
+      "user_id": 5
     },
     {
       "service": "remote",
@@ -63,7 +68,8 @@
       "country": "México",
       "state": "Ciudad de México",
       "city": "Polanco",
-      "images": "full_stack_dev.jpg"
+      "images": null,
+      "user_id": 6
     },
     {
       "service": "in_place",
@@ -74,7 +80,8 @@
       "country": "Perú",
       "state": "Lima",
       "city": "Santiago de Surco",
-      "images": "arquitecto.jpg"
+      "images": null,
+      "user_id": 7
     },
     {
       "service": "remote",
@@ -85,7 +92,8 @@
       "country": "Colombia",
       "state": "Bogotá",
       "city": "Chapinero",
-      "images": "redes_sociales.jpg"
+      "images": null,
+      "user_id": 8
     },
     {
       "service": "in_place",
@@ -96,7 +104,8 @@
       "country": "Perú",
       "state": "Lima",
       "city": "San Miguel",
-      "images": "psicologo.jpg"
+      "images": null,
+      "user_id": 9
     },
     {
       "service": "remote",
@@ -107,7 +116,8 @@
       "country": "España",
       "state": "Madrid",
       "city": "Chamberí",
-      "images": "ilustrador_digital.jpg"
+      "images": null,
+      "user_id": 10
     }
   ]
   
