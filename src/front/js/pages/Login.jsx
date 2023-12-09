@@ -59,10 +59,6 @@ const Login = () => {
       <div className="container">
         <h1>Bienvenido</h1>
         <form className="login-form" onSubmit={handleSubmit}>
-        {store.error != null ? <div className="alert alert-danger" role="alert">
-          {store.error}
-        </div> : <></>}
-        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <input
               type="email"
