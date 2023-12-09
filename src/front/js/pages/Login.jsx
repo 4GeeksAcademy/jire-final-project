@@ -90,14 +90,14 @@ const Login = () => {
               onChange={handleRememberMeChange}
             />
             <div class="checkbox-container">
-            <label className="remember-me" for="remember">
-              Recuérdame
-            </label>
-            <Link to="/forgot-password">Recuperar Contraseña</Link>
-          </div>
+              <label className="remember-me" for="remember">
+                Recuérdame
+              </label>
+              <Link to="/forgot-password">Recuperar Contraseña</Link>
+            </div>
           </div>
           
-          <button type="submit" className="btn btn-primary mt-4">
+          <button type="submit" className="btn btn-primary mt-4 button-login">
             Iniciar sesión
           </button>
         </form>
