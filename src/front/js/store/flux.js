@@ -91,13 +91,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify(user),
 					});
-					
+
 					if (response.status === 200) {
 					const data = await response.json();
 					localStorage.setItem("token", data.token)
+					localStorage.setItem("user", JSON.stringify(data.user));
 					setStore({
-						token : data.token
-					})
+						token: data.token,
+						user: data.user,
+					});
+            
 					return response.status
 					} else {
 					console.error("Inicio de sesión fallido");
@@ -109,6 +112,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("Error al procesar la solicitud de inicio de sesión", error);
 				}
 			},
+
+			resetPassword: async (user) => {
+				try {
+					const response = await fetch(`${process.env.BACKEND_URL}/reset-password`, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify(user),
+					});
+
+					if (response.status === 200) {
+						const data = await response.json();
+						console.log("Respuesta de resetPassword:", data);
+						return response.status;
+					} else {
+						console.error("Solicitud de restablecimiento de contraseña fallida");
+						return response.status;
+					}
+				} catch (error) {
+					console.error("Error al procesar la solicitud de restablecimiento de contraseña", error);
+					throw error;
+				}
+			},
+
 			logout : () =>{
 				localStorage.removeItem("token")
 				setStore({
