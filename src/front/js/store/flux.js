@@ -18,7 +18,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			solicitudes: [],
 			token: localStorage.getItem("token") || null,
 			error: null,
-			profile: []
+			profile: [],
+			solicitudProfile:[]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -172,6 +173,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error);
 				}
+			},
+			getSolicitudProfile: (userid, id)=>{
+				fetch(`${process.env.BACKEND_URL}/getprofile/${userid}/${id}`)
+				.then(res => res.json())
+				.then(data => setStore({
+					solicitudProfile : data
+				}))
 			}
 		}
 	}

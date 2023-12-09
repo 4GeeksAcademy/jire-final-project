@@ -87,7 +87,7 @@ class Solicitudes(db.Model):
     category = db.Column(db.String(70), unique=False, nullable=False)
     service = db.Column(db.Enum(service_type), nullable=False, unique=False, default="in_place")
     images = db.Column(db.String(250), nullable=True, unique=False)
-    public_image_id = db.Column(db.String(100), unique=False, nullable=False)
+    public_image_id = db.Column(db.String(100), unique=False,)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def serialize(self):
@@ -101,7 +101,8 @@ class Solicitudes(db.Model):
             "state": self.state,
             "city": self.city,
             "service": self.service.value,
-            "images": self.images
+            "images": self.images,
+            "user_id": self.user_id
         }
 
 class Personal_info(db.Model):

@@ -33,6 +33,7 @@ export const EditProfile = () => {
                 <button className="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     Edit Personal information
                 </button>
+            
                 <div className="collapse" id="collapseExample">
                     <div className="card card-body">
                         <div className="d-flex justify-content-between container">

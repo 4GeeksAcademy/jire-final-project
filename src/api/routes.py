@@ -144,7 +144,8 @@ def solicitudes_population():
                 country=sols["country"],
                 state=sols["state"],
                 city=sols["city"],
-                images=sols["images"]
+                images=sols["images"],
+                user_id = sols["user_id"]
             )
             db.session.add(sols)
             try:
@@ -307,6 +308,8 @@ def get_solicitudes():
     solicitudes = Solicitudes.query.all()
     return jsonify(list(map(lambda sol: sol.serialize(), solicitudes)))
 
+
+
 @api.route('/personal_info/<int:userid>', methods=['POST'])
 def personal_info(userid):
     user = User.query.get(userid)
@@ -398,9 +401,26 @@ def get_profile():
         prof = "No professional info"
     else:
         prof = professional_profile.serialize()
-
-
     return jsonify(user_info.serialize(), pers_prof, prof )
+
+
+@api.route('/getprofile/<int:id>/<int:sol_id>', methods=['GET'])
+def get_full_profile(id, sol_id):
+    personal_profile = Personal_info.query.filter_by(user_id = id).one_or_none()
+    user_info = User.query.filter_by(id=id).one_or_none()
+    solicitud = Solicitudes.query.get(sol_id)
+
+    if personal_profile is None:
+        pers_prof = "No personal info"
+    else:
+        pers_prof = personal_profile.serialize()
+    
+    return jsonify(user_info.serialize(), pers_prof, solicitud.serialize())
+
+
+
+
+
 
 #add solicitud
 @api.route('/addsolicitud', methods=['POST'])
