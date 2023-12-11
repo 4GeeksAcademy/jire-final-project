@@ -2,24 +2,26 @@
     {
       "title": "Desarrollo de Aplicaciones Web Personalizadas",
       "description": "Ofrezco servicios de desarrollo fullstack utilizando tecnologías como React, Flask y SQL. ¡Transformemos tu idea en realidad!",
-      "address": "Avenida Principal 456",
-      "country": "Mexico",
-      "state": "Jalisco",
-      "city": "Guadalajara",
-      "category": "Desarrollo de Software",
+      "address":"calle uno 123",
+      "country":"Spain",
+      "state":"Catalunya",
+      "city":"Barcelona",
+      "category": "tecnologias",
       "service": "remote",
-      "images": "web_dev.jpg"
+      "images": null,
+      "user_id": 1
     },
     {
       "title": "Servicios de Plomería Rápida y Eficiente",
       "description": "Plomero certificado con experiencia en reparaciones e instalaciones. ¡Soluciono tus problemas de plomería de manera eficaz!",
-      "address": "Calle dos 234",
-      "country": "Argentina",
-      "state": "Cordoba",
-      "city": "Cordoba",
-      "category": "Servicios de Plomería",
+      "address":"calle dos 234",
+      "country":"Argentina",
+      "state":"Cordoba",
+      "city":"Cordoba",
+      "category": "mantenimiento",
       "service": "in_place",
-      "images": "plumber_service.jpg"
+      "images": null,
+      "user_id": 2
     },
     {
       "title": "Desarrollo de Proyectos Digitales a Medida",
@@ -28,20 +30,22 @@
       "country": "Mexico",
       "state": "Jalisco",
       "city": "Guadalajara",
-      "category": "Desarrollo Web",
+      "category": "tecnologias",
       "service": "remote",
-      "images": "digital_project.jpg"
+      "images": null,
+      "user_id": 3
     },
     {
-      "title": "Comisiones Artísticas Personalizadas",
+      "title": "Comisiones Artísticas Personalizadas para eventos",
       "description": "Artista creativo especializado en pintura y escultura. ¡Hazte con una obra única y personalizada para tu espacio!",
       "address": "Calle Creativa 789",
       "country": "Colombia",
       "state": "Bogotá",
       "city": "Bogotá",
-      "category": "Arte y Diseño",
+      "category": "eventos",
       "service": "remote",
-      "images": "art_commission.jpg"
+      "images": null,
+      "user_id": 4
     },
     {
       "title": "Asesoramiento Empresarial y Estratégico",
@@ -50,9 +54,10 @@
       "country": "Peru",
       "state": "Lima",
       "city": "Lima",
-      "category": "Asesoría Empresarial",
+      "category": "negocios",
       "service": "remote",
-      "images": "business_advice.jpg"
+      "images": null,
+      "user_id": 5
     },
     {
       "title": "Servicios de Chef para Eventos Gourmet",
@@ -61,9 +66,10 @@
       "country": "Chile",
       "state": "Santiago",
       "city": "Santiago",
-      "category": "Servicios de Catering",
+      "category": "eventos",
       "service": "in_place",
-      "images": "gourmet_catering.jpg"
+      "images": null,
+      "user_id": 6
     },
     {
       "title": "Clases de Fitness Personalizadas en Línea",
@@ -72,9 +78,10 @@
       "country": "Ecuador",
       "state": "Quito",
       "city": "Quito",
-      "category": "Fitness y Salud",
+      "category": "personal_trainning",
       "service": "remote",
-      "images": "fitness_classes.jpg"
+      "images": null,
+      "user_id": 7
     },
     {
       "title": "Diseño Gráfico Creativo y Profesional",
@@ -83,9 +90,10 @@
       "country": "Venezuela",
       "state": "Caracas",
       "city": "Caracas",
-      "category": "Diseño Gráfico",
+      "category": "tecnologias",
       "service": "remote",
-      "images": "graphic_design.jpg"
+      "images": null,
+      "user_id": 8
     },
     {
       "title": "Conciertos de Música Clásica en Vivo",
@@ -94,9 +102,10 @@
       "country": "Uruguay",
       "state": "Montevideo",
       "city": "Montevideo",
-      "category": "Eventos Musicales",
+      "category": "eventos",
       "service": "in_place",
-      "images": "classical_music_concert.jpg"
+      "images": null,
+      "user_id": 9
     },
     {
       "title": "Soluciones de Ingeniería Innovadoras",
@@ -105,8 +114,9 @@
       "country": "Paraguay",
       "state": "Asunción",
       "city": "Asunción",
-      "category": "Ingeniería Innovadora",
+      "category": "tecnologias",
       "service": "remote",
-      "images": "engineering_services.jpg"
+      "images": null,
+      "user_id": 10
     }
   ]

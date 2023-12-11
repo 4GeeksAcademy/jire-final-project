@@ -6,14 +6,9 @@ export const Profile = () => {
     const { store, actions } = useContext(Context)
     const {profile} = store
 
-
-
-
     useEffect(() => {
          actions.profile()
      }, [])
-
-
 
     return (
         <>
@@ -27,7 +22,7 @@ export const Profile = () => {
                 </div>
                 <div className="contianer mt-4">
                     {profile[1] == "No personal info"? <>
-                        <h4 className="text-danger">No personal or professional info added</h4>
+                        <h4 className="text-danger">No personal info added</h4>
                         <Link to="/editprofile"><button className="btn btn-primary">Complete profile</button></Link>
                     </>:
                     <>
@@ -40,17 +35,20 @@ export const Profile = () => {
                         <p className="fs-4">Country: {profile[1]?.country}</p>
                         <p className="fs-4">Phone: {profile[1]?.phone}</p>
 
-
-                        <h2 className="mt-4">Professional Info:</h2>
-                        <p className="fs-4">Ocupation: {profile[2]?.ocupation}</p>
-                        <p className="fs-4">Years of experience: {profile[2]?.experience}</p>
-                        <p className="fs-4">Certificate: {profile[2]?.certificate}</p>
-                        <p className="fs-4">Institution: {profile[2]?.institution}</p>
-                        <p className="fs-4">Languages: {profile[2]?.languages}</p>
-                        <p className="fs-4">Languages Level: {profile[2]?.languages_level}</p>
-                        <p className="fs-4">Skills: {profile[2]?.skills} </p>
-                        <p className="fs-4">Skills Level: {profile[2]?.skills_level}</p>
-                        <Link to="/editprofile"><button className="btn btn-primary">Edit profile</button></Link>
+                    {profile[2] == "No professional info"? <><h4 className="text-danger">No professional info added</h4>
+                    <Link to="/editprofile"><button className="btn btn-primary">Complete profile</button></Link></> : <>
+                    <h2 className="mt-4">Professional Info:</h2>
+                    <p className="fs-4">Ocupation: {profile[2]?.ocupation}</p>
+                    <p className="fs-4">Years of experience: {profile[2]?.experience}</p>
+                    <p className="fs-4">Certificate: {profile[2]?.certificate}</p>
+                    <p className="fs-4">Institution: {profile[2]?.institution}</p>
+                    <p className="fs-4">Languages: {profile[2]?.languages}</p>
+                    <p className="fs-4">Languages Level: {profile[2]?.languages_level}</p>
+                    <p className="fs-4">Skills: {profile[2]?.skills} </p>
+                    <p className="fs-4">Skills Level: {profile[2]?.skills_level}</p>
+                    <Link to="/editprofile"><button className="btn btn-primary">Edit profile</button></Link>
+                    </>
+                    }
                     </>}
                 </div>
             </div>

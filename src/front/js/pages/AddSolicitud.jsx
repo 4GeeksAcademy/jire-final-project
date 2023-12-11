@@ -101,14 +101,25 @@ const AddSolicitud = () => {
                         </div>
                         <div className="form-group  mt-3 mx-3">
                             <label>Categoria</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                name="category"
+                            <select
+                                className="form-select"
                                 value={solicitud.category}
-                                onChange={handleChange}
-                                required
-                            />
+                                name="category"
+                                onChange={handleChange}>
+                                <option >Seleccione una opcion</option>
+                                <option value="mantenimiento">mantenimiento</option>
+                                <option value="limpieza">limpieza</option>
+                                <option value="construcción">construcción</option>
+                                <option value="jardineria">jardineria</option>
+                                <option value="mudanzas">mudanzas</option>
+                                <option value="tecnologias">tecnologias</option>
+                                <option value="negocios">negocios</option>
+                                <option value="salud">salud</option>
+                                <option value="eventos">eventos</option>
+                                <option value="traducciones">traducciones</option>
+                                <option value="idiomas">idiomas</option>
+                                <option value="personal_training">personal training</option>
+                            </select>
                         </div>
                         <div className="form-group mt-3 mx-3">
                             <label>Tipo de servicio</label>
