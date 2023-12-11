@@ -22,6 +22,22 @@ class service_type(Enum):
     remote = "remote",
     in_place = "in place"
 
+class category(Enum):
+    mantenimiento = "mantenimiento",
+    limpieza = "limpieza",
+    construccion = "construcción",
+    jardineria = "jardineria",
+    mudanzas = "mudanzas",
+    tecnologias = "tecnologias",
+    negocios = "negocios",
+    salud = "salud",
+    eventos = "eventos",
+    traducciones = 'traducciones'
+    idiomas = 'idiomas',
+    personal_trainning = 'personal_trainning'
+
+
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -34,6 +50,7 @@ class User(db.Model):
     personal_info = db.relationship('Personal_info', backref='User')
     professional_info = db.relationship('Professional_info', backref='User')
     solicitudes = db.relationship('Solicitudes', backref='User')
+    ofertas = db.relationship('Ofertas', backref='User')
 
 
     def __repr__(self):
@@ -57,22 +74,25 @@ class Ofertas(db.Model):
     country= db.Column(db.String(30), nullable=False, unique=False)
     state = db.Column(db.String(40), nullable=False, unique=False)
     city = db.Column(db.String(40), nullable=False, unique=False)
-    category = db.Column(db.String(70), unique=False, nullable=False)
+    category = db.Column(db.Enum(category), unique=False, nullable=False)
     service = db.Column(db.Enum(service_type), nullable=False, unique=False, default="in place")
     images = db.Column(db.String(250), nullable=True, unique=False)
+    public_image_id = db.Column(db.String(100), unique=False,)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def serialize(self):
         return{
             "id": self.id,
             "title": self.title,
             "description" : self.description,
-            "category" : self.category,
+            "category" : self.category.value,
             "address" : self.address,
             "country" : self.country,
             "state": self.state,
             "city": self.city,
             "service": self.service.value,
-            "images": self.images
+            "images": self.images,
+            "user_id": self.user_id
         }
 
 
@@ -84,7 +104,7 @@ class Solicitudes(db.Model):
     country= db.Column(db.String(30), nullable=False, unique=False)
     state = db.Column(db.String(40), nullable=False, unique=False)
     city = db.Column(db.String(40), nullable=False, unique=False)
-    category = db.Column(db.String(70), unique=False, nullable=False)
+    category = db.Column(db.Enum(category), unique=False, nullable=False)
     service = db.Column(db.Enum(service_type), nullable=False, unique=False, default="in_place")
     images = db.Column(db.String(250), nullable=True, unique=False)
     public_image_id = db.Column(db.String(100), unique=False,)
@@ -95,7 +115,7 @@ class Solicitudes(db.Model):
             "id": self.id,
             "title": self.title,
             "description" : self.description,
-            "category" : self.category,
+            "category" : self.category.value,
             "address" : self.address,
             "country" : self.country,
             "state": self.state,
@@ -127,6 +147,7 @@ class Personal_info(db.Model):
             "state": self.state,
             "city": self.city,
             "description": self.description,
+            "user_id": self.user_id
         }
 
 

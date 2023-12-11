@@ -19,7 +19,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			token: localStorage.getItem("token") || null,
 			error: null,
 			profile: [],
-			solicitudProfile:[]
+			solicitudProfile:[],
+			offerDetail:[]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -179,6 +180,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then(res => res.json())
 				.then(data => setStore({
 					solicitudProfile : data
+				}))
+			},
+			getOfferProfile:(userid, id)=>{
+				fetch(`${process.env.BACKEND_URL}/getofferprofile/${userid}/${id}`)
+				.then(res=>res.json())
+				.then(data => setStore({
+					offerDetail: data
 				}))
 			}
 		}

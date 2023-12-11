@@ -172,7 +172,8 @@ def ofertas_population():
                 country=offer["country"],
                 state=offer["state"],
                 city=offer["city"],
-                images=offer["images"]
+                images=offer["images"],
+                user_id=offer["user_id"]
             )
             db.session.add(offers)
             try:
@@ -417,7 +418,23 @@ def get_full_profile(id, sol_id):
     
     return jsonify(user_info.serialize(), pers_prof, solicitud.serialize())
 
+@api.route('/getofferprofile/<int:id>/<int:offerid>', methods=['GET'])
+def getoffer_profile(id, offerid):
+    user_info = User.query.filter_by(id=id).one_or_none()
+    personal_profile = Personal_info.query.filter_by(user_id = id).one_or_none()
+    professional_profile = Professional_info.query.filter_by(user_id=id).one_or_none()
+    offer = Ofertas.query.get(offerid)
 
+    if personal_profile is None:
+        pers_prof = "No personal info"
+    else:
+        pers_prof = personal_profile.serialize()
+    
+    if professional_profile is None:
+        prof = "No professional info"
+    else:
+        prof = professional_profile.serialize()
+    return jsonify(user_info.serialize(), pers_prof, prof, offer.serialize() )
 
 
 

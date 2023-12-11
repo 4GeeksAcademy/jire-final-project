@@ -89,8 +89,8 @@ const Login = () => {
               checked={rememberMe}
               onChange={handleRememberMeChange}
             />
-            <div class="checkbox-container">
-              <label className="remember-me" for="remember">
+            <div className="checkbox-container">
+              <label className="remember-me" htmlFor="remember">
                 Recuérdame
               </label>
               <Link to="/forgot-password">Recuperar Contraseña</Link>

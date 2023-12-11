@@ -13,9 +13,11 @@ import AddSolicitud from "./pages/AddSolicitud.jsx"
 import {Profile} from "./pages/profile.js"
 import { EditProfile } from "./pages/editProfile.js";
 import DetailSolicitud from "./pages/DetailSolicitud.jsx";
+import { OfferDeatail } from "./pages/OfferDetail.jsx";
 import injectContext from "./store/appContext";
 import Login from "./pages/Login.jsx";
 import ResetPassword from "./pages/resetPassword.js"
+import { CategoriesPage } from "./pages/CategoriesPage.jsx";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -47,6 +49,8 @@ const Layout = () => {
                         <Route element={<Profile/>} path="/profile"/>
                         <Route element={<EditProfile/>} path="/editprofile"/>
                         <Route element={<DetailSolicitud/>} path="/detailsolicitud"/>
+                        <Route element={<OfferDeatail/>} path="/offerdetail"/>
+                        <Route element={<CategoriesPage/>} path="/categorias/:categoria"/>
                         <Route element={<Login/>} path="/login"/>
                         <Route element={<ResetPassword/>} path="/forgot-password"/>
                     </Routes>
