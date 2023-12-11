@@ -10,6 +10,7 @@ import { Solicitudes } from "./pages/solicitudes.js";
 import { Ofertas } from "./pages/ofertas.js"
 
 import AddSolicitud from "./pages/AddSolicitud.jsx"
+import AddOferta from "./pages/AddOferta.jsx";
 import {Profile} from "./pages/profile.js"
 import { EditProfile } from "./pages/editProfile.js";
 import DetailSolicitud from "./pages/DetailSolicitud.jsx";
@@ -45,6 +46,7 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<Solicitudes/>} path="/solicitudes"/>
                         <Route element={<AddSolicitud/>} path="/addsolicitud"/>
+                        <Route element={<AddOferta/>} path="/addoferta"/>
                         <Route element={<Ofertas/>} path="/ofertas"/>
                         <Route element={<Profile/>} path="/profile"/>
                         <Route element={<EditProfile/>} path="/editprofile"/>

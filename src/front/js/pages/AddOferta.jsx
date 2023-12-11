@@ -107,18 +107,18 @@ const AddOferta = () => {
                                 name="category"
                                 onChange={handleChange}>
                                 <option >Seleccione una opcion</option>
-                                <option value="mantenimiento">mantenimiento</option>
-                                <option value="limpieza">limpieza</option>
-                                <option value="construcción">construcción</option>
-                                <option value="jardineria">jardineria</option>
-                                <option value="mudanzas">mudanzas</option>
-                                <option value="tecnologias">tecnologias</option>
-                                <option value="negocios">negocios</option>
-                                <option value="salud">salud</option>
-                                <option value="eventos">eventos</option>
-                                <option value="traducciones">traducciones</option>
-                                <option value="idiomas">idiomas</option>
-                                <option value="personal_training">personal training</option>
+                                <option value="mantenimiento">Mantenimiento</option>
+                                <option value="limpieza">Limpieza</option>
+                                <option value="construcción">Construcción</option>
+                                <option value="jardineria">Jardineria</option>
+                                <option value="mudanzas">Mudanzas</option>
+                                <option value="tecnologias">Tecnologías</option>
+                                <option value="negocios">Negocios</option>
+                                <option value="salud">Salud</option>
+                                <option value="eventos">Eventos</option>
+                                <option value="traducciones">Traducciones</option>
+                                <option value="idiomas">Idiomas</option>
+                                <option value="personal_training">Personal training</option>
                             </select>
                         </div>
                         <div className="form-group mt-3 mx-3">
@@ -135,7 +135,7 @@ const AddOferta = () => {
 
                         </div>
                         <div className="form-group m-3">
-                            <label>Adjunte una imagen que ayude a clarificar su proyecto</label>
+                            <label>Adjunte una imagen que ayude a clarificar su proyecto ofertado</label>
                             <input
                                 type="file"
                                 className="form-control"
