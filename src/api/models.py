@@ -173,7 +173,8 @@ class Professional_info(db.Model):
             "certificate": self.certificate,
             "institution": self.institution,
             "languages": self.languages,
-            "languages_level": self.language_level.value,
+            "language_level": self.language_level.value,
+            "user_id": self.user_id
         }
 
 

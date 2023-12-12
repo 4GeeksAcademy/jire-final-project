@@ -372,6 +372,59 @@ def edit_personal_info():
         print(error)
         return jsonify({"error":f"{error}"}), 500
 
+@api.route('/professional-info', methods=['POST'])
+@jwt_required()
+def post_professinal_info():
+    user_id = get_jwt_identity().get('id')
+    body = request.json
+    ocupation = body.get('ocupation')
+    experience = body.get('experience')
+    skills = body.get('skills')
+    skills_level = body.get('skills_level')
+    certificate = body.get('certificate')
+    institution = body.get('institution')
+    languages = body.get('languages')
+    language_level = body.get('language_level')
+    
+    professional_info = Professional_info(
+        ocupation=ocupation, experience=experience,
+        skills=skills, skills_level=skills_level, certificate=certificate,
+        institution=institution, languages=languages, language_level=language_level,
+        user_id=user_id
+    )
+    db.session.add(professional_info)
+    try:
+        db.session.commit()
+        return jsonify({"message":"info agregada"}), 201
+    except Exception as error:
+        db.sesion.rollback()
+        return jsonify({"error":f"{error.args}"})
+
+@api.route('/edit-professional-info', methods=['PUT'])
+@jwt_required()
+def edit_professional_info():
+    user_id = get_jwt_identity().get('id')
+    professional_info = Professional_info.query.filter_by(user_id=user_id).one_or_none()
+    body = request.json
+
+    professional_info.ocupation = body.get('ocupation')
+    professional_info.experience = body.get('experience')
+    professional_info.skills = body.get('skills')
+    professional_info.skills_level = body.get('skills_level')
+    professional_info.certificate = body.get('certificate')
+    professional_info.institution = body.get('institution')
+    professional_info.languages = body.get('languages')
+    professional_info.language_level = body.get('language_level')
+
+    try:
+        db.session.commit()
+        return jsonify({"message":"info actualizada"}), 200
+    except Exception as error:
+        db.session.rollback()
+        print(error)
+        return jsonify({"error":f"{error}"}), 500
+
+
 
 
 @api.route('/profile', methods=['GET'])

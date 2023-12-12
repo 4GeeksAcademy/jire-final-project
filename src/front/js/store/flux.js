@@ -230,6 +230,68 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error)
 				}
+			},
+			postPersonalInfo : async(data) =>{
+				let store = getStore()
+				try {
+					let response = await fetch(`${process.env.BACKEND_URL}/personalinfo`,{
+						method :"POST",
+						headers:{
+							Authorization : `Bearer ${store.token}`
+						},
+						body: data
+					})
+					return response.status
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			editPersonalInfo : async(data) =>{
+				let store = getStore()
+				try {
+					let response = await fetch(`${process.env.BACKEND_URL}/edit-personalinfo`,{
+						method :"PUT",
+						headers:{
+							Authorization : `Bearer ${store.token}`
+						},
+						body: data
+					})
+					return response.status
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			postProfessionalInfo: async(data) =>{
+				let store = getStore()
+				try {
+					let response = await fetch(`${process.env.BACKEND_URL}/professional-info`,{
+						method :"POST",
+						headers:{
+							Authorization : `Bearer ${store.token}`,
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					})
+					return response.status
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			editProfessionalInfo : async(data) =>{
+				let store = getStore()
+				try {
+					let response = await fetch(`${process.env.BACKEND_URL}/edit-professional-info`,{
+						method :"PUT",
+						headers:{
+							Authorization : `Bearer ${store.token}`,
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					})
+					return response.status
+				} catch (error) {
+					console.log(error);
+				}
 			}
 		}
 	}
