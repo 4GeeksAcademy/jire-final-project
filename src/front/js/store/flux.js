@@ -209,6 +209,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then(data => setStore({
 					offerDetail: data
 				}))
+			},
+			editProfile: async(data) =>{
+				let store = getStore()
+				try {
+					let  response =  await fetch(`${process.env.BACKEND_URL}/edituser`, {
+						headers:{
+							Authorization: `Bearer ${store.token}`,
+							"Content-Type": "application/json"
+						},
+						method : "PUT",
+						body: JSON.stringify(data)
+					})
+					if (response.status == 200){
+						console.log("perfil editado ")
+					}else{
+						console.log("no se agrego")
+					}
+					return response.status
+				} catch (error) {
+					console.log(error)
+				}
 			}
 		}
 	}

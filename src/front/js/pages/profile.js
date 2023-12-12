@@ -27,6 +27,7 @@ export const Profile = () => {
                     </>:
                     <>
                         <h2>Personal Info:</h2>
+                        <img className="img-thumbnail" src={profile[1]?.avatar}></img>
                         <p className="fs-4">Nickname: {profile[1]?.nickname}</p>
                         <p className="fs-4">Personal description: <span className="fs-5">{profile[1]?.description}</span></p>
                         <p className="fs-4">Address: {profile[1]?.address}</p>

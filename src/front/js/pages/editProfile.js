@@ -1,42 +1,64 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 
 export const EditProfile = () => {
     const { store, actions } = useContext(Context)
     const { profile } = store
     const [info, setInfo] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
-        if(store.profile.length <= 0){
-            actions.profile() 
+        if (store.profile.length <= 0) {
+            actions.profile()
         }
         getProfile()
     }, [store.profile])
 
-    const getProfile = () =>{
-       const prof = profile
-       let info_prof = []
-       info_prof.push(prof[0])
-       if(prof[1] != "No personal info"){
-        info_prof.push(prof[1])
-       }
-       if(prof[2] != "No professional info"){
-        info_prof.push(prof[2])
-       }
-       setInfo([
-        ...info_prof
-       ])
-
-    }
-
-    const handleChange = (e) =>{
-        let aux = {
-            ...info[0],
-            [e.target.name] : e.target.value
+    //guardando informacion en un estado para poder manipularlo
+    const getProfile = () => {
+        const prof = profile
+        let info_prof = []
+        info_prof.push(prof[0])
+        if (prof[1] != "No personal info") {
+            info_prof.push(prof[1])
         }
+        if (prof[2] != "No professional info") {
+            info_prof.push(prof[2])
+        }
+        setInfo([
+            ...info_prof
+        ])
     }
 
+//onChange para la info basia del usuario
+    const handleChange = (e) => {
+        setInfo([
+            {
+                ...info[0],
+                [e.target.name]: e.target.value
+            }
+        ])
+    }
+//onSubmit para la info basia del usuario
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        let response = await actions.editProfile(info[0])
+        if (response == 200) {
+            navigate('/profile')
+        }
 
+    }
+
+//onChange para la info personal del usuario
+const handlePers = (e) => {
+    setInfo([
+        {
+            ...info[1],
+            [e.target.name]: e.target.value
+        }
+    ])
+}
 
 
     return (
@@ -48,10 +70,10 @@ export const EditProfile = () => {
                         Nombre y Apellido*
                     </p>
                     <div className="d-flex">
-                        <form className="d-flex">
-                        <input type="text" className="form-control mx-1" placeholder="Nombre" onChange={handleChange} name="name" value={info[0]?.name} ></input>
-                        <input type="text" className="form-control" placeholder="Apellido" onChange={handleChange} name="lastname" value={info[0]?.lastname}></input>
-                        <button className="btn btn-primary mx-1" >Listo</button>
+                        <form className="d-flex" onSubmit={handleSubmit}>
+                            <input type="text" className="form-control mx-1" placeholder="Nombre" onChange={handleChange} name="name" value={info[0]?.name} ></input>
+                            <input type="text" className="form-control" placeholder="Apellido" onChange={handleChange} name="lastname" value={info[0]?.lastname}></input>
+                            <button className="btn btn-primary mx-1" type="submit" >Listo</button>
                         </form>
                     </div>
                 </div>
@@ -63,53 +85,56 @@ export const EditProfile = () => {
                 </button>
                 <div className="collapse" id="collapseExample">
                     <div className="card card-body">
-                        <div className="d-flex justify-content-between container">
-                            <p className="mt-2">
-                                Nickname*
-                            </p>
-                            <div className="mt-2">
-                                <input type="text" className="form-control mx-1" placeholder="Nickname" value={info[1]?.nickname}></input>
+                        <form>
+                            <div className="d-flex justify-content-between container">
+                                <p className="mt-2">
+                                    Nickname*
+                                </p>
+                                <div className="mt-2">
+                                    <input type="text" className="form-control mx-1" placeholder="Nickname" onChange={handlePers} name="nickname" value={info[1]?.nickname}></input>
+                                </div>
                             </div>
-                        </div>
-                        <div className="d-flex justify-content-between container">
-                            <p className="mt-2">
-                                Foto de perfil
-                            </p>
-                            <div className="mt-2">
-                                <input
-                                    type="file"
-                                    className="form-control"
-                                    name="images"
-                                />
+                            <div className="d-flex justify-content-between container">
+                                <p className="mt-2">
+                                    Foto de perfil
+                                </p>
+                                <div className="mt-2">
+                                    <input
+                                        type="file"
+                                        className="form-control"
+                                        name="avatar"
+                                        
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        <div className="d-flex justify-content-between container">
-                            <p className="mt-2">
-                                Address
-                            </p>
-                            <div className="mt-2">
-                                <input type="text" className="form-control mx-1" placeholder="Address" value={info[1]?.address}></input>
+                            <div className="d-flex justify-content-between container">
+                                <p className="mt-2">
+                                    Address
+                                </p>
+                                <div className="mt-2">
+                                    <input type="text" className="form-control mx-1" placeholder="Address" value={info[1]?.address}></input>
+                                </div>
                             </div>
-                        </div>
-                        <div className="d-flex justify-content-between container">
-                            <p className="mt-2">
-                                City, State and Country
-                            </p>
-                            <div className="mt-2 mx-1 d-flex">
-                                <input type="text" className="form-control mx-1" placeholder="City" value={info[1]?.city}></input>
-                                <input type="text" className="form-control mx-1" placeholder="State" value={info[1]?.state}></input>
-                                <input type="text" className="form-control" placeholder="Country" value={info[1]?.country}></input>
+                            <div className="d-flex justify-content-between container">
+                                <p className="mt-2">
+                                    City, State and Country
+                                </p>
+                                <div className="mt-2 mx-1 d-flex">
+                                    <input type="text" className="form-control mx-1" placeholder="City" value={info[1]?.city}></input>
+                                    <input type="text" className="form-control mx-1" placeholder="State" value={info[1]?.state}></input>
+                                    <input type="text" className="form-control" placeholder="Country" value={info[1]?.country}></input>
+                                </div>
                             </div>
-                        </div>
-                        <div className="d-flex justify-content-between container">
-                            <p className="mt-2">
-                                Personal Description*
-                            </p>
-                            <div className="mt-2">
-                                <textarea className="form-control mx-1" value={info[1]?.description}></textarea>
+                            <div className="d-flex justify-content-between container">
+                                <p className="mt-2">
+                                    Personal Description*
+                                </p>
+                                <div className="mt-2">
+                                    <textarea className="form-control mx-1" value={info[1]?.description}></textarea>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

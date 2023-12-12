@@ -129,6 +129,7 @@ class Personal_info(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nickname = db.Column(db.String(20), nullable=False, unique=True)
     avatar = db.Column(db.String(250), nullable=False, unique=False)
+    public_avatar_id = db.Column(db.String(100), unique=False,)
     phone = db.Column(db.String(20), nullable=False, unique=True)
     address= db.Column(db.String(50), nullable=False, unique=False)
     country= db.Column(db.String(30), nullable=False, unique=False)
