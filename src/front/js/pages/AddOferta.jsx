@@ -48,7 +48,7 @@ const AddOferta = () => {
                 text: "Information not valid"
             })
         }
-        if (result == 200) {
+        if (result == 201) {
             navigate('/ofertas')
         }
     }
