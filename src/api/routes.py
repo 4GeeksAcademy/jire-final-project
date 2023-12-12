@@ -477,4 +477,41 @@ def post_solicitud():
         return jsonify({"error": f"{error}"})
 
    
+@api.route('/addoferta', methods=['POST'])
+@jwt_required()
+def add_oferta():
+    body_form = request.form
+    body_file =  request.files
+    user_id = get_jwt_identity().get("id")
+    personal_info = Personal_info.query.filter_by(id=user_id).one_or_none()
 
+    title = body_form.get('title')
+    description = body_form.get('description')
+    category = body_form.get('category')
+    service  = body_form.get('service')
+    address = personal_info.address
+    country = personal_info.country
+    state = personal_info.state
+    city = personal_info.city
+    images = body_file.get('images')
+
+    result_image = uploader.upload(body_file.get("images"))
+    images = result_image.get("secure_url")
+    public_id = result_image.get("public_id")
+
+
+    oferta = Ofertas(
+                            title=title, description=description, address=address,
+                            country=country, state=state, category=category,
+                            city=city, service=service,
+                            images=images, user_id=user_id, public_image_id=public_id
+        )
+
+    db.session.add(oferta)
+    print(public_id)
+    try:
+        db.session.commit()
+        return jsonify({"message":"oferta agregada"}), 201
+    except Exception as error:
+        db.session.rollback()
+        return jsonify({"error":f"{error.args}"})

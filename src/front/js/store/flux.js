@@ -175,6 +175,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 			},
+			addOferta: async(oferta) =>{
+				let store = getStore()
+				try {
+					let  response =  await fetch(`${process.env.BACKEND_URL}/addoferta`, {
+						headers:{
+							Authorization: `Bearer ${store.token}`
+						},
+						method : "POST",
+						body: oferta
+					})
+					if (response.status == 201){
+						console.log("solicitud agregada")
+					}else{
+						console.log("no se agrego")
+					}
+					return response.status
+				} catch (error) {
+					console.log(error)
+				}
+
+			},
 			getSolicitudProfile: (userid, id)=>{
 				fetch(`${process.env.BACKEND_URL}/getprofile/${userid}/${id}`)
 				.then(res => res.json())
