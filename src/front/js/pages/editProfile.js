@@ -4,11 +4,39 @@ import { Context } from "../store/appContext";
 export const EditProfile = () => {
     const { store, actions } = useContext(Context)
     const { profile } = store
-    
+    const [info, setInfo] = useState([])
 
     useEffect(() => {
-        actions.profile()
-    }, [])
+        if(store.profile.length <= 0){
+            actions.profile() 
+        }
+        getProfile()
+    }, [store.profile])
+
+    const getProfile = () =>{
+       const prof = profile
+       let info_prof = []
+       info_prof.push(prof[0])
+       if(prof[1] != "No personal info"){
+        info_prof.push(prof[1])
+       }
+       if(prof[2] != "No professional info"){
+        info_prof.push(prof[2])
+       }
+       setInfo([
+        ...info_prof
+       ])
+
+    }
+
+    const handleChange = (e) =>{
+        let aux = {
+            ...info[0],
+            [e.target.name] : e.target.value
+        }
+    }
+
+
 
 
     return (
@@ -21,8 +49,8 @@ export const EditProfile = () => {
                     </p>
                     <div className="d-flex">
                         <form className="d-flex">
-                        <input type="text" className="form-control mx-1" placeholder="Nombre" value={profile[0]?.name} ></input>
-                        <input type="text" className="form-control" placeholder="Apellido" value={profile[0]?.lastname}></input>
+                        <input type="text" className="form-control mx-1" placeholder="Nombre" onChange={handleChange} name="name" value={info[0]?.name} ></input>
+                        <input type="text" className="form-control" placeholder="Apellido" onChange={handleChange} name="lastname" value={info[0]?.lastname}></input>
                         <button className="btn btn-primary mx-1" >Listo</button>
                         </form>
                     </div>
@@ -33,7 +61,6 @@ export const EditProfile = () => {
                 <button className="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     Edit Personal information
                 </button>
-            
                 <div className="collapse" id="collapseExample">
                     <div className="card card-body">
                         <div className="d-flex justify-content-between container">
@@ -41,7 +68,7 @@ export const EditProfile = () => {
                                 Nickname*
                             </p>
                             <div className="mt-2">
-                                <input type="text" className="form-control mx-1" placeholder="Nickname" value={profile[1]?.nickname}></input>
+                                <input type="text" className="form-control mx-1" placeholder="Nickname" value={info[1]?.nickname}></input>
                             </div>
                         </div>
                         <div className="d-flex justify-content-between container">
@@ -62,7 +89,7 @@ export const EditProfile = () => {
                                 Address
                             </p>
                             <div className="mt-2">
-                                <input type="text" className="form-control mx-1" placeholder="Address" value={profile[1]?.address}></input>
+                                <input type="text" className="form-control mx-1" placeholder="Address" value={info[1]?.address}></input>
                             </div>
                         </div>
                         <div className="d-flex justify-content-between container">
@@ -70,9 +97,9 @@ export const EditProfile = () => {
                                 City, State and Country
                             </p>
                             <div className="mt-2 mx-1 d-flex">
-                                <input type="text" className="form-control mx-1" placeholder="City" value={profile[1]?.city}></input>
-                                <input type="text" className="form-control mx-1" placeholder="State" value={profile[1]?.state}></input>
-                                <input type="text" className="form-control" placeholder="Country" value={profile[1]?.country}></input>
+                                <input type="text" className="form-control mx-1" placeholder="City" value={info[1]?.city}></input>
+                                <input type="text" className="form-control mx-1" placeholder="State" value={info[1]?.state}></input>
+                                <input type="text" className="form-control" placeholder="Country" value={info[1]?.country}></input>
                             </div>
                         </div>
                         <div className="d-flex justify-content-between container">
@@ -80,7 +107,7 @@ export const EditProfile = () => {
                                 Personal Description*
                             </p>
                             <div className="mt-2">
-                                <textarea className="form-control mx-1" value={profile[1]?.description}></textarea>
+                                <textarea className="form-control mx-1" value={info[1]?.description}></textarea>
                             </div>
                         </div>
                     </div>
@@ -97,8 +124,8 @@ export const EditProfile = () => {
                                 Ocupation
                             </p>
                             <div className="mt-2 d-flex mx-1">
-                                <input type="text" className="form-control mx-1" placeholder="Ocupation" value={profile[2]?.ocupation}></input>
-                                <input type="text" className="form-control mx-1" placeholder="Experience" value={profile[2]?.experience}></input>
+                                <input type="text" className="form-control mx-1" placeholder="Ocupation" value={info[2]?.ocupation}></input>
+                                <input type="text" className="form-control mx-1" placeholder="Experience" value={info[2]?.experience}></input>
                             </div>
                         </div>
                         <div className="d-flex justify-content-between container">
@@ -106,8 +133,8 @@ export const EditProfile = () => {
                                 Skills
                             </p>
                             <div className="mt-2 d-flex mx-1">
-                                <input type="text" className="form-control mx-1" placeholder="Skills" value={profile[2]?.skills}></input>
-                                <input type="text" className="form-control mx-1" placeholder="Skills level" value={profile[2]?.skills_level}></input>
+                                <input type="text" className="form-control mx-1" placeholder="Skills" value={info[2]?.skills}></input>
+                                <input type="text" className="form-control mx-1" placeholder="Skills level" value={info[2]?.skills_level}></input>
                             </div>
                         </div>
                         <div className="d-flex justify-content-between container">
@@ -115,8 +142,8 @@ export const EditProfile = () => {
                                 Certificates
                             </p>
                             <div className="mt-2 d-flex mx-1">
-                                <input type="text" className="form-control mx-1" placeholder="Certificate" value={profile[2]?.certificate}></input>
-                                <input type="text" className="form-control mx-1" placeholder="Institution" value={profile[2]?.institution}></input>
+                                <input type="text" className="form-control mx-1" placeholder="Certificate" value={info[2]?.certificate}></input>
+                                <input type="text" className="form-control mx-1" placeholder="Institution" value={info[2]?.institution}></input>
                             </div>
                         </div>
                         <div className="d-flex justify-content-between container">
@@ -124,8 +151,8 @@ export const EditProfile = () => {
                                 Languages
                             </p>
                             <div className="mt-2 d-flex mx-1">
-                                <input type="text" className="form-control mx-1" placeholder="Languages" value={profile[2]?.languages}></input>
-                                <input type="text" className="form-control mx-1" placeholder="Language Level" value={profile[2]?.languages_level}></input>
+                                <input type="text" className="form-control mx-1" placeholder="Languages" value={info[2]?.languages}></input>
+                                <input type="text" className="form-control mx-1" placeholder="Language Level" value={info[2]?.languages_level}></input>
                             </div>
                         </div>
                     </div>

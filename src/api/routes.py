@@ -311,7 +311,7 @@ def get_solicitudes():
 
 
 
-@api.route('/personal_info/<int:userid>', methods=['POST'])
+@api.route('/personal_info/<int:userid>', methods=['POST', 'PUT'])
 def personal_info(userid):
     user = User.query.get(userid)
     if user is None:
@@ -515,3 +515,26 @@ def add_oferta():
     except Exception as error:
         db.session.rollback()
         return jsonify({"error":f"{error.args}"})
+
+@api.route('/edituser', methods=['PUT'])
+@jwt_required()
+def edit_user():
+    user_id = get_jwt_identity().get('id')
+    user = User.query.get(user_id)
+    body = request.json
+    name = body.get("name")
+    lastname = body.get("lastname")
+
+
+    if name != " " and lastname != " ":
+        user.name = name
+        user.lastname = lastname
+    else:
+        return jsonify({"error":"bad credentials"}), 400
+
+    try:
+        db.session.commit()
+        return jsonify({"message":"info actualizada"}), 200
+    except Exception as error:
+        db.sesion.rollback()
+        return jsonify({"error":f"{error}"}), 500
