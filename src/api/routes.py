@@ -310,79 +310,121 @@ def get_solicitudes():
     return jsonify(list(map(lambda sol: sol.serialize(), solicitudes)))
 
 
+@api.route('/personalinfo', methods=['POST'])
+@jwt_required()
+def post_personal_info():
+    user_id = get_jwt_identity().get('id')
+    body_form = request.form
+    body_file = request.files
 
-@api.route('/personal_info/<int:userid>', methods=['POST'])
-def personal_info(userid):
-    user = User.query.get(userid)
-    if user is None:
-        return jsonify({"message":"this user does not exists"}),400
+    nickname = body_form.get('nickname')
+    phone = body_form.get('phone')
+    address = body_form.get('address')
+    country = body_form.get('country')
+    state = body_form.get('state')
+    city = body_form.get('city')
+    description = body_form.get('description')
+    avatar = body_file.get('avatar')
 
-    body = request.json
-    nickname = body.get("nickname")
-    avatar = body.get("avatar")
-    phone = body.get("phone")
-    address = body.get("address")
-    country = body.get("country")
-    state = body.get("state")
-    city = body.get("city")
-    description = body.get("description")
-    user_id = userid
+    result_avatar = uploader.upload(body_file.get("avatar"))
+    avatar = result_avatar.get("secure_url")
+    public_id = result_avatar.get("public_id")
 
-    personal = Personal_info(
-    nickname=nickname, 
-    avatar=avatar, phone=phone,
-    address=address, country=country,
-    state=state, city=city,
-    description=description, 
-    user_id=user_id)
-
-    db.session.add(personal)
-
-    try:
-        db.session.commit()
-        return jsonify({"message": "info added"}), 201
-    except Exception as error:
-        db.session.rollback()
-        return jsonify({"error":f"{error.args}"})
-
-
-
-@api.route('/professional_info/<int:userid>', methods=['POST'])
-def professional_info(userid):
-    user = User.query.get(userid)
-    if user is None:
-        return jsonify({"message":"this user does not exists"}),400
-    
-    body = request.json
-    ocupation = body.get("ocupation")
-    experience = body.get("experience")
-    skills = body.get("skills")
-    skills_level = body.get("skills_level")
-    certificate = body.get("certificate")
-    institution = body.get("institution")
-    languages = body.get("languages")
-    language_level = body.get("language_level")
-
-    professional_info = Professional_info(
-        ocupation=ocupation,
-        experience=experience,
-        skills=skills,
-        skills_level=skills_level,
-        certificate=certificate,
-        institution=institution,
-        languages=languages,
-        language_level= language_level,
-        user_id = userid
+    personal_info = Personal_info(
+        nickname=nickname, avatar=avatar, public_avatar_id=public_id,
+        phone=phone, address=address, country=country, state=state,
+        city=city, description=description, user_id=user_id
     )
-
-    db.session.add(professional_info)
+    
+    db.session.add(personal_info)
     try:
         db.session.commit()
         return jsonify({"message":"info added"}), 201
     except Exception as error:
         db.session.rollback()
-        return jsonify({"error":f"{error.args}"})
+        return jsonify({"error":f"{error}"}), 500
+
+@api.route('/edit-personalinfo', methods=['PUT'])
+@jwt_required()
+def edit_personal_info():
+    user_id = get_jwt_identity().get('id')
+    body_form = request.form
+    body_file = request.files
+    personal_info = Personal_info.query.filter_by(user_id=user_id).one_or_none()
+
+    personal_info.nickname = body_form.get('nickname')
+    personal_info.phone = body_form.get('phone')
+    personal_info.address = body_form.get('address')
+    personal_info.country = body_form.get('country')
+    personal_info.state = body_form.get('state')
+    personal_info.city = body_form.get('city')
+    personal_info.description = body_form.get('description')
+
+    result_avatar = uploader.upload(body_file.get("avatar"))
+    personal_info.avatar = result_avatar.get("secure_url")
+    personal_info.public_avatat_id = result_avatar.get("public_id")
+
+    try:
+        db.session.commit()
+        return jsonify({"message":"info actualizada"}), 200
+    except Exception as error:
+        db.sesion.rollback()
+        print(error)
+        return jsonify({"error":f"{error}"}), 500
+
+@api.route('/professional-info', methods=['POST'])
+@jwt_required()
+def post_professinal_info():
+    user_id = get_jwt_identity().get('id')
+    body = request.json
+    ocupation = body.get('ocupation')
+    experience = body.get('experience')
+    skills = body.get('skills')
+    skills_level = body.get('skills_level')
+    certificate = body.get('certificate')
+    institution = body.get('institution')
+    languages = body.get('languages')
+    language_level = body.get('language_level')
     
+    professional_info = Professional_info(
+        ocupation=ocupation, experience=experience,
+        skills=skills, skills_level=skills_level, certificate=certificate,
+        institution=institution, languages=languages, language_level=language_level,
+        user_id=user_id
+    )
+    db.session.add(professional_info)
+    try:
+        db.session.commit()
+        return jsonify({"message":"info agregada"}), 201
+    except Exception as error:
+        db.sesion.rollback()
+        return jsonify({"error":f"{error.args}"})
+
+@api.route('/edit-professional-info', methods=['PUT'])
+@jwt_required()
+def edit_professional_info():
+    user_id = get_jwt_identity().get('id')
+    professional_info = Professional_info.query.filter_by(user_id=user_id).one_or_none()
+    body = request.json
+
+    professional_info.ocupation = body.get('ocupation')
+    professional_info.experience = body.get('experience')
+    professional_info.skills = body.get('skills')
+    professional_info.skills_level = body.get('skills_level')
+    professional_info.certificate = body.get('certificate')
+    professional_info.institution = body.get('institution')
+    professional_info.languages = body.get('languages')
+    professional_info.language_level = body.get('language_level')
+
+    try:
+        db.session.commit()
+        return jsonify({"message":"info actualizada"}), 200
+    except Exception as error:
+        db.session.rollback()
+        print(error)
+        return jsonify({"error":f"{error}"}), 500
+
+
 
 
 @api.route('/profile', methods=['GET'])
@@ -515,3 +557,27 @@ def add_oferta():
     except Exception as error:
         db.session.rollback()
         return jsonify({"error":f"{error.args}"})
+
+@api.route('/edituser', methods=['PUT'])
+@jwt_required()
+def edit_user():
+    user_id = get_jwt_identity().get('id')
+    user = User.query.get(user_id)
+    body = request.json
+    name = body.get("name")
+    lastname = body.get("lastname")
+
+
+    if name != " " and lastname != " ":
+        user.name = name
+        user.lastname = lastname
+    else:
+        return jsonify({"error":"bad credentials"}), 400
+
+    try:
+        db.session.commit()
+        return jsonify({"message":"info actualizada"}), 200
+    except Exception as error:
+        db.sesion.rollback()
+        print(error)
+        return jsonify({"error":f"{error}"}), 500

@@ -27,6 +27,7 @@ export const Profile = () => {
                     </>:
                     <>
                         <h2>Personal Info:</h2>
+                        <img className="img-thumbnail" src={profile[1]?.avatar}></img>
                         <p className="fs-4">Nickname: {profile[1]?.nickname}</p>
                         <p className="fs-4">Personal description: <span className="fs-5">{profile[1]?.description}</span></p>
                         <p className="fs-4">Address: {profile[1]?.address}</p>
@@ -43,7 +44,7 @@ export const Profile = () => {
                     <p className="fs-4">Certificate: {profile[2]?.certificate}</p>
                     <p className="fs-4">Institution: {profile[2]?.institution}</p>
                     <p className="fs-4">Languages: {profile[2]?.languages}</p>
-                    <p className="fs-4">Languages Level: {profile[2]?.languages_level}</p>
+                    <p className="fs-4">Languages Level: {profile[2]?.language_level}</p>
                     <p className="fs-4">Skills: {profile[2]?.skills} </p>
                     <p className="fs-4">Skills Level: {profile[2]?.skills_level}</p>
                     <Link to="/editprofile"><button className="btn btn-primary">Edit profile</button></Link>
