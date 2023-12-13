@@ -19,8 +19,8 @@ export const Cardoferta = () => {
                                         <h5 className="card-title">{oferta.title}</h5>
                                         <p className="card-text">{oferta.description}</p>
                                         <p className="card-text">{oferta.city}, {oferta.country}</p>
-                                        <Link to='/offerdetail'>
-                                        <button className='btn btn-primary' onClick={() => actions.getOfferProfile(oferta.user_id, oferta.id)}>Ver Mas</button>
+                                        <Link to={`/offerdetail/${oferta.user_id}/${oferta.id}`}>
+                                        <button className='btn btn-primary' >Ver Mas</button>
                                         </Link>
                                     </div>
                                 </div>

@@ -22,7 +22,7 @@ export const CardSolicitudes = () => {
                                         <h5 className="card-title">{solicitud.title}</h5>
                                         <p className="card-text">{solicitud.description}</p>
                                         <p className="card-text">{solicitud.city}, {solicitud.country}</p>
-                                        <Link to='/detailsolicitud'><button className='btn btn-primary' onClick={()=>actions.getSolicitudProfile(solicitud.user_id, solicitud.id)}>Ver Mas</button></Link>
+                                        <Link to={`/detailsolicitud/${solicitud.user_id}/${solicitud.id}`}><button className='btn btn-primary'>Ver Mas</button></Link>
                                     </div>
                                 </div>
                             )

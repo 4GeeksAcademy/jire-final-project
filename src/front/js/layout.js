@@ -19,6 +19,7 @@ import injectContext from "./store/appContext";
 import Login from "./pages/Login.jsx";
 import ResetPassword from "./pages/resetPassword.js"
 import { CategoriesPage } from "./pages/CategoriesPage.jsx";
+import { PublicProfile } from "./pages/PublicProfile.jsx";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -50,11 +51,12 @@ const Layout = () => {
                         <Route element={<Ofertas/>} path="/ofertas"/>
                         <Route element={<Profile/>} path="/profile"/>
                         <Route element={<EditProfile/>} path="/editprofile"/>
-                        <Route element={<DetailSolicitud/>} path="/detailsolicitud"/>
-                        <Route element={<OfferDeatail/>} path="/offerdetail"/>
+                        <Route element={<DetailSolicitud/>} path="/detailsolicitud/:userid/:id"/>
+                        <Route element={<OfferDeatail/>} path="/offerdetail/:userid/:id"/>
                         <Route element={<CategoriesPage/>} path="/categorias/:categoria"/>
                         <Route element={<Login/>} path="/login"/>
                         <Route element={<ResetPassword/>} path="/forgot-password"/>
+                        <Route element={<PublicProfile/>} path="/public-profile/:userid/:id"/>
                     </Routes>
                     <Footer />
                 </ScrollToTop>
