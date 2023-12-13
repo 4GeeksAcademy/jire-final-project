@@ -1,10 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Context } from '../store/appContext'
 import JireLogo from '../../img/handyman.png'
+import { useParams } from 'react-router-dom'
 
 const DetailSolicitud = () => {
   const { store, actions } = useContext(Context)
+  const userid = useParams()
+  const id = useParams()
   const {solicitudProfile} = store
+
+  useEffect(() =>{
+    actions.getSolicitudProfile(userid.userid, id.id)
+  }, [])
+
   return (
     <div className='container'>
       <div className="card mb-3">

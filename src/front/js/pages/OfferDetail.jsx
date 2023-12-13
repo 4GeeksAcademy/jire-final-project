@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import JireLogo from '../../img/handyman.png'
 import { Context } from "../store/appContext"
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 export const OfferDeatail = () => {
     const {store, actions} = useContext(Context)
+    const userid = useParams()
+    const id = useParams()
     const {offerDetail} = store
+    useEffect(() =>{
+        actions.getOfferProfile(userid.userid, id.id)
+    }, [])
+
 
     return (
         <>
@@ -25,7 +33,10 @@ export const OfferDeatail = () => {
                     <p className="card-text">{offerDetail[0]?.email}</p>
                     <p className="card-text">{offerDetail[1]?.phone}</p>
                     <div className="d-flex ">
+                    <Link to={`/public-profile/${userid.userid}/${id.id}`}>
                     <button className="btn btn-primary">Ver Perfil del Profesional</button>
+                    </Link>
+
                     <button className="btn btn-primary mx-2">Aplicar</button>
                     </div>
                 </div>
