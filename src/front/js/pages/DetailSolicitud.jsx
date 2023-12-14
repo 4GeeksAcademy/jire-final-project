@@ -7,16 +7,31 @@ const DetailSolicitud = () => {
   const { store, actions } = useContext(Context)
   const userid = useParams()
   const id = useParams()
-  const {solicitudProfile} = store
+  const { solicitudProfile, profile } = store
 
-  useEffect(() =>{
+  useEffect(() => {
     actions.getSolicitudProfile(userid.userid, id.id)
+    actions.profile()
   }, [])
+
+  const handleEmail = async() => {
+    const email = {
+      subject: `Solicitud de Jire aplicada por ${profile[0]?.name} ${profile[0]?.lastname}`,
+      to: solicitudProfile[0]?.email,
+      email: profile[0]?.email,
+      phone: profile[1]?.phone,
+      offer_title: solicitudProfile[2]?.title
+    }
+    let response = await actions.offerEmail(email)
+    if (response == 200) {
+      console.log("se envio")
+    }
+  }
 
   return (
     <div className='container'>
       <div className="card mb-3">
-        <img src={solicitudProfile[2]?.images == null? JireLogo: solicitudProfile[2]?.images } className="card-img-top" alt="..." />
+        <img src={solicitudProfile[2]?.images == null ? JireLogo : solicitudProfile[2]?.images} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">Solicitud de trabajo: {solicitudProfile[2]?.title}</h5>
           <p className="card-text">{solicitudProfile[2]?.description}</p>
@@ -29,7 +44,7 @@ const DetailSolicitud = () => {
           <p className="card-text">{solicitudProfile[1]?.phone}</p>
           <p className="card-text">{solicitudProfile[1]?.description}</p>
           <p className="card-text">{solicitudProfile[1]?.address}, {solicitudProfile[1]?.city}, {solicitudProfile[1]?.state}, {solicitudProfile[1]?.country} </p>
-          <button className='btn btn-primary'>Quiero aplicar a esta solicitud</button>
+          <button className='btn btn-primary' onClick={handleEmail}>Quiero aplicar a esta solicitud</button>
         </div>
       </div>
 
