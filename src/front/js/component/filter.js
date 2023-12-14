@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
+import { Context } from "../store/appContext";
 import logo from "../../img/logo-jire.png"
 import { Link } from "react-router-dom";
 
 const Filter = (props) => {
+    const { store, actions } = useContext(Context)
+
     return (
         <>
             <div className='container my-4'>
@@ -16,8 +19,8 @@ const Filter = (props) => {
                                         <h5 className="card-title">{item.title}</h5>
                                         <p className="card-text">{item.description}</p>
                                         <p className="card-text">{item.city}, {item.country}</p>
-                                        <Link to='/offerdetail'>
-                                            <button className='btn btn-primary' onClick={() => actions.getOfferProfile(item.user_id, item.id)}>Ver Mas</button>
+                                        <Link to={`/offerdetail/${item.user_id}/${item.id}`}>
+                                            <button className='btn btn-primary'>Ver Mas</button>
                                         </Link>
                                     </div>
                                 </div>

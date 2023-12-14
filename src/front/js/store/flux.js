@@ -292,6 +292,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error);
 				}
+			},
+			offerEmail: async(ofertaEmail) =>{
+				try {
+					let response = await fetch(`${process.env.BACKEND_URL}/sendemail`,{
+						method:['POST'],
+						headers:{
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(ofertaEmail)
+					})
+					return response.status
+				} catch (error) {
+					console.log(error);
+				}
 			}
 		}
 	}

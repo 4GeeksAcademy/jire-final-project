@@ -10,11 +10,27 @@ export const OfferDeatail = () => {
     const {store, actions} = useContext(Context)
     const userid = useParams()
     const id = useParams()
-    const {offerDetail} = store
+    const {offerDetail, profile} = store
+
+
     useEffect(() =>{
         actions.getOfferProfile(userid.userid, id.id)
+        actions.profile()
     }, [])
 
+    const handleEmail = async() =>{
+        const email = {
+            subject: `Oferta de Jire solicitada por ${profile[0]?.name} ${profile[0]?.lastname}`,
+            to : offerDetail[0]?.email,
+            email : profile[0]?.email,
+            phone: profile[1]?.phone,
+            offer_title : offerDetail[3]?.title
+        }
+        let response = await actions.offerEmail(email)
+        if(response == 200){
+            console.log("se envio")
+        }
+    }
 
     return (
         <>
@@ -37,7 +53,7 @@ export const OfferDeatail = () => {
                     <button className="btn btn-primary">Ver Perfil del Profesional</button>
                     </Link>
 
-                    <button className="btn btn-primary mx-2">Aplicar</button>
+                    <button className="btn btn-primary mx-2" onClick={handleEmail}>Aplicar</button>
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Ofertas, Solicitudes, Personal_info, Professional_info
-from api.utils import generate_sitemap, APIException
+from api.utils import generate_sitemap, APIException, send_email
 from base64 import b64encode
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
@@ -17,6 +17,7 @@ import cloudinary.uploader as uploader
 import os
 import re
 import json
+import smtplib
 
 
 api = Blueprint('api', __name__)
@@ -26,6 +27,10 @@ personalinfo_path = os.path.join(os.path.dirname(__file__), "personal_info.json"
 professionalinfo_path = os.path.join(os.path.dirname(__file__), "professional_info.json")
 solicitudes_path = os.path.join(os.path.dirname(__file__), "solicitudes.json")
 ofertas_path = os.path.join(os.path.dirname(__file__), "ofertas.json")
+smtp_address = os.getenv("SMTP_ADDRESS")
+smtp_port = os.getenv("SMTP_PORT")
+email_address = os.getenv("EMAIL_ADDRESS")
+email_password = os.getenv("EMAIL_PASSWORD")
 
 # werkzeug security
 def set_password(password, salt):
@@ -581,3 +586,45 @@ def edit_user():
         db.sesion.rollback()
         print(error)
         return jsonify({"error":f"{error}"}), 500
+
+
+def email_send(subject, recipient, message):
+    message = f"Subject: {subject}\nTo: {recipient}\n{message}"
+    try:
+        server = smtplib.SMTP(smtp_address, smtp_port)
+        server.starttls()
+        server.login(email_address, email_password)
+        server.sendmail(email_address, recipient, message)
+        server.quit()
+        print('message has been sent')
+        return True
+    except Exception as error:
+        print(error)
+        print('This is the error capture')
+        return False
+
+@api.route('/sendemail', methods=['POST'])
+def send_email_app():
+    body = request.json
+    print(body)
+    title = body.get("offer_title")
+    phone = body.get("phone")
+    email = body.get("email")
+
+    message = f'''
+    <h3>Hola!, me intereso tu oferta sobre {title}</h3>
+    <p>Te dejo mi contacto para que me escribas o me llames<p/>
+    <p>{phone}</p>
+    <p>{email}</p>
+    '''
+    
+    result = send_email(body.get("subject"), body.get("to"), message)
+    if result == True:
+        return jsonify("Message has been sent"), 200
+    else:
+        return jsonify("Message failed"), 500
+    # result = email_send(body.get("subject"), body.get("to"), body.get("message"))
+    # if result == True:
+    #     return jsonify("Message has been sent"), 200
+    # else:
+    #     return jsonify("Message failed"), 500
