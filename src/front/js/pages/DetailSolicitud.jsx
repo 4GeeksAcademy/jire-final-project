@@ -3,6 +3,7 @@ import { Context } from '../store/appContext'
 import JireLogo from '../../img/handyman.png'
 import { useParams } from 'react-router-dom'
 import '../../styles/home.css'
+import Swal from 'sweetalert2'
 
 const DetailSolicitud = () => {
   const { store, actions } = useContext(Context)
@@ -25,7 +26,17 @@ const DetailSolicitud = () => {
     }
     let response = await actions.offerEmail(email)
     if (response == 200) {
-      console.log("se envio")
+      Swal.fire({
+        title: "Perfecto!",
+        text: "Se envio un mail de contacto con tu informacion de contacto al solicitante",
+        icon: "success"
+      });
+    }else{
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Intentalo mas tarde"
+    })
     }
   }
 
@@ -44,11 +55,11 @@ const DetailSolicitud = () => {
               <p className="card-text">Tipo de Servicio: {solicitudProfile[2]?.service}</p>
               <p className="card-text">{solicitudProfile[2]?.address}, {solicitudProfile[2]?.city}, {solicitudProfile[2]?.state}, {solicitudProfile[2]?.country} </p>
               <h5 className='card-title'>Datos del solicitante</h5>
-              <p className="card-text">{solicitudProfile[0]?.name} {solicitudProfile[0]?.lastname}</p>
-              <p className="card-text">{solicitudProfile[0]?.email}</p>
-              <p className="card-text">{solicitudProfile[1]?.phone}</p>
-              <p className="card-text">{solicitudProfile[1]?.description}</p>
-              <p className="card-text">{solicitudProfile[1]?.address}, {solicitudProfile[1]?.city}, {solicitudProfile[1]?.state}, {solicitudProfile[1]?.country} </p>
+              <p className="card-text"><i class="fa-solid fa-user mx-2"></i>{solicitudProfile[0]?.name} {solicitudProfile[0]?.lastname}</p>
+              <p className="card-text"><i class="fa-solid fa-envelope mx-2"></i>{solicitudProfile[0]?.email}</p>
+              <p className="card-text"><i class="fa-solid fa-phone mx-2"></i>{solicitudProfile[1]?.phone}</p>
+              <p className="card-text"><i class="fa-solid fa-briefcase mx-2"></i>{solicitudProfile[1]?.description}</p>
+              <p className="card-text"><i class="fa-solid fa-location-dot mx-2"></i>{solicitudProfile[1]?.address}, {solicitudProfile[1]?.city}, {solicitudProfile[1]?.state}, {solicitudProfile[1]?.country} </p>
               <button className='btn btn-primary' onClick={handleEmail}>Quiero aplicar a esta solicitud</button>
             </div>
           </div>

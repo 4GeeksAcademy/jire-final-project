@@ -15,7 +15,7 @@ export const Categorias = () => {
         { texto: "Eventos", link:"/categorias/eventos", imagen: "fa-birthday-cake" },
         { texto: "Traducciones", link:"/categorias/traducciones", imagen: "fa-solid fa-language " },
         { texto: "Aprende idiomas", link:"/categorias/idiomas", imagen: "fa-solid fa-book" },
-        { texto: "Personal Trainning", link:"/categorias/personal_traning", imagen: "fa-solid fa-dumbbell" },  
+        { texto: "Personal Trainning", link:"/categorias/personal_training", imagen: "fa-solid fa-dumbbell" },  
     ]);
 
     return (
