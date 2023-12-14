@@ -8,6 +8,7 @@ const Login = () => {
   const { actions, store } = useContext(Context);
   const navigate = useNavigate();
   const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState(false)
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -34,6 +35,8 @@ const Login = () => {
         // Inicio de sesión exitoso
         navigate("/");
         localStorage.setItem("user", user.email);
+      }else{
+        setError(true)
       }
     } catch (error) {
       console.error("Error al procesar la solicitud de inicio de sesión", error);
@@ -59,6 +62,11 @@ const Login = () => {
       <div className="container">
         <h1 className="h1-login">Bienvenido</h1>
         <form className="login-form" onSubmit={handleSubmit}>
+        {error == true && 
+          <div className="alert alert-danger" role="alert">
+          Contraseña o Email incorrectos
+           </div>
+          }
           <div className="form-group">
             <input
               type="email"

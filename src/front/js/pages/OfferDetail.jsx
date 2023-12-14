@@ -4,7 +4,7 @@ import JireLogo from '../../img/handyman.png'
 import { Context } from "../store/appContext"
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import '../../styles/home.css'
 
 export const OfferDeatail = () => {
     const {store, actions} = useContext(Context)
@@ -34,9 +34,14 @@ export const OfferDeatail = () => {
 
     return (
         <>
+        
             <div className="container">
-            <div className="card mb-3">
+            <div className="row justify-content-center">
+                <div className="col-12 col-md-8">
+                <div className="card mb-3">
+                <div className="detalle">
                 <img src={offerDetail[3]?.images == null? JireLogo: offerDetail[3]?.images } className="card-img-top" alt="..." />
+                </div>
                 <div className="card-body">
                     <h5 className="card-title">{offerDetail[3]?.title}</h5>
                     <p className="card-text">{offerDetail[3]?.description}</p>
@@ -55,6 +60,8 @@ export const OfferDeatail = () => {
 
                     <button className="btn btn-primary mx-2" onClick={handleEmail}>Aplicar</button>
                     </div>
+                </div>
+            </div>
                 </div>
             </div>
             </div>

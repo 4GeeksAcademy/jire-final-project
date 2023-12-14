@@ -1,7 +1,7 @@
 [
     {
         "nickname":"ramidev123",
-        "avatar":"avatar.jpg",
+        "avatar": "https://res.cloudinary.com/dxxgwwhpk/image/upload/v1702520728/nffvbx2dfft1geydlkwl.png",
         "phone":"35423535",
         "address":"calle uno 123",
         "country":"Spain",
@@ -12,7 +12,7 @@
     },
     {
         "nickname":"plomerojesus2",
-        "avatar":"avatar.jpg",
+        "avatar": "https://res.cloudinary.com/dxxgwwhpk/image/upload/v1702520728/nffvbx2dfft1geydlkwl.png",
         "phone":"354123123",
         "address":"calle dos 234",
         "country":"Argentina",
@@ -23,7 +23,7 @@
     },
     {
         "nickname": "programadoraMaria",
-        "avatar": "maria_avatar.jpg",
+        "avatar": "https://res.cloudinary.com/dxxgwwhpk/image/upload/v1702520728/nffvbx2dfft1geydlkwl.png",
         "phone": "3567890123",
         "address": "Avenida Principal 456",
         "country": "Mexico",
@@ -34,7 +34,7 @@
       },
       {
         "nickname": "artistaCarlos",
-        "avatar": "creativo_avatar.jpg",
+        "avatar": "https://res.cloudinary.com/dxxgwwhpk/image/upload/v1702520728/nffvbx2dfft1geydlkwl.png",
         "phone": "3323456789",
         "address": "Calle Creativa 789",
         "country": "Colombia",
@@ -45,7 +45,7 @@
       },
       {
         "nickname": "emprendedoraLaura",
-        "avatar": "juan_avatar.jpg",
+        "avatar": "https://res.cloudinary.com/dxxgwwhpk/image/upload/v1702520728/nffvbx2dfft1geydlkwl.png",
         "phone": "3109876543",
         "address": "Emprendimiento Street 321",
         "country": "Peru",
@@ -56,7 +56,7 @@
       },
       {
         "nickname": "chefJavier",
-        "avatar": "chef_avatar.jpg",
+        "avatar": "https://res.cloudinary.com/dxxgwwhpk/image/upload/v1702520728/nffvbx2dfft1geydlkwl.png",
         "phone": "3334445555",
         "address": "Calle de la Gastronomía 789",
         "country": "Chile",
@@ -67,7 +67,7 @@
       },
       {
         "nickname": "ProfeFitnessAna",
-        "avatar": "fitness_avatar.jpg",
+        "avatar": "https://res.cloudinary.com/dxxgwwhpk/image/upload/v1702520728/nffvbx2dfft1geydlkwl.png",
         "phone": "3498765432",
         "address": "Ruta de Aventuras 987",
         "country": "Ecuador",
@@ -78,7 +78,7 @@
       },
       {
         "nickname": "diseñadorGabriel",
-        "avatar": "creativa_avatar.jpg",
+        "avatar": "https://res.cloudinary.com/dxxgwwhpk/image/upload/v1702520728/nffvbx2dfft1geydlkwl.png",
         "phone": "3123456789",
         "address": "Diseño Creativo 456",
         "country": "Venezuela",
@@ -89,7 +89,7 @@
       },
       {
         "nickname": "IsabelMusica",
-        "avatar": "musica_avatar.jpg",
+        "avatar": "https://res.cloudinary.com/dxxgwwhpk/image/upload/v1702520728/nffvbx2dfft1geydlkwl.png",
         "phone": "3335557777",
         "address": "Calle de la Música 654",
         "country": "Uruguay",
@@ -100,7 +100,7 @@
       },
       {
         "nickname": "MartinIngeniero",
-        "avatar": "ingeniero_avatar.jpg",
+        "avatar": "https://res.cloudinary.com/dxxgwwhpk/image/upload/v1702520728/nffvbx2dfft1geydlkwl.png",
         "phone": "3777888999",
         "address": "Innovación Avenue 876",
         "country": "Paraguay",

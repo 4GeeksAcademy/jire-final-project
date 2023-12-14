@@ -5,3 +5,19 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+.avatar{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+.detalle{
+    display: flex;
+    justify-content: center;
+}
+.detalle img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: center;
+}

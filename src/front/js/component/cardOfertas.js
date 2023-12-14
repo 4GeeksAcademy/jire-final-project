@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Context } from '../store/appContext'
-import logo from "../../img/logo-jire.png"
+import logo from "../../img/handyman.png"
 import { Link } from 'react-router-dom'
 export const Cardoferta = () => {
 
@@ -18,7 +18,7 @@ export const Cardoferta = () => {
                                     <div className="card-body">
                                         <h5 className="card-title">{oferta.title}</h5>
                                         <p className="card-text">{oferta.description}</p>
-                                        <p className="card-text">{oferta.city}, {oferta.country}</p>
+                                        <p className="card-text"><i class="fa-solid fa-location-dot mx-2"></i>{oferta.city}, {oferta.country}</p>
                                         <Link to={`/offerdetail/${oferta.user_id}/${oferta.id}`}>
                                         <button className='btn btn-primary' >Ver Mas</button>
                                         </Link>
