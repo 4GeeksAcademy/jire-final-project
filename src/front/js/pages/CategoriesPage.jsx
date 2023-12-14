@@ -12,8 +12,8 @@ export const CategoriesPage = () => {
         actions.getSolicitudes()
     }, [])
 
-    const offers = store.ofertas.filter((offer)=> offer.category[0] == category.categoria)
-    const solicitudes = store.solicitudes.filter((sol) => sol.category[0] == category.categoria)
+    const offers = store.ofertas.filter((offer)=> offer.category[0] == category.categoria || offer.category == category.categoria)
+    const solicitudes = store.solicitudes.filter((sol) => sol.category[0] == category.categoria || sol.category == category.categoria)
 
 
   return (
@@ -34,8 +34,8 @@ export const CategoriesPage = () => {
                                         <h5 className="card-title">{oferta.title}</h5>
                                         <p className="card-text">{oferta.description}</p>
                                         <p className="card-text">{oferta.city}, {oferta.country}</p>
-                                        <Link to='/offerdetail'>
-                                        <button className='btn btn-primary' onClick={() => actions.getOfferProfile(oferta.user_id, oferta.id)}>Ver Mas</button>
+                                        <Link to={`/offerdetail/${oferta.user_id}/${oferta.id}`}>
+                                        <button className='btn btn-primary'>Ver Mas</button>
                                         </Link>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@ export const CategoriesPage = () => {
                                         <h5 className="card-title">{solicitud.title}</h5>
                                         <p className="card-text">{solicitud.description}</p>
                                         <p className="card-text">{solicitud.city}, {solicitud.country}</p>
-                                        <Link to='/detailsolicitud'><button className='btn btn-primary' onClick={()=>actions.getSolicitudProfile(solicitud.user_id, solicitud.id)}>Ver Mas</button></Link>
+                                        <Link to={`/detailsolicitud/${solicitud.user_id}/${solicitud.id}`}><button className='btn btn-primary'>Ver Mas</button></Link>
                                     </div>
                                 </div>
                             )

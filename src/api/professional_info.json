@@ -108,5 +108,170 @@
       "languages": "Spanish, English",
       "language_level": "intermediate",
       "user_id": 10
+    },
+    {
+        "ocupation": "Desarrollador",
+        "experience": 3,
+        "skills": "React, Flask, SQL",
+        "skills_level": "intermediate",
+        "certificate": "Fullstack Developer",
+        "institution": "Coding Academy Madrid",
+        "languages": "Spanish, English",
+        "language_level": "expert",
+        "user_id": 11
+    },
+    {
+        "ocupation": "Artista Plástico",
+        "experience": 2,
+        "skills": "Pintura al óleo, Escultura",
+        "skills_level": "basic",
+        "certificate": "Artista Plástico Certificado",
+        "institution": "Arte Creativo Buenos Aires",
+        "languages": "Spanish",
+        "language_level": "basic",
+        "user_id": 12
+    },
+    {
+        "ocupation": "Ingeniero Innovador",
+        "experience": 4,
+        "skills": "Desarrollo de prototipos, Tecnologías emergentes",
+        "skills_level": "expert",
+        "certificate": "Ingeniero Innovador Certificado",
+        "institution": "Tech Institute Querétaro",
+        "languages": "Spanish, English",
+        "language_level": "expert",
+        "user_id": 13
+    },
+    {
+        "ocupation": "Diseñadora Gráfica",
+        "experience": 5,
+        "skills": "Diseño gráfico, Branding",
+        "skills_level": "intermediate",
+        "certificate": "Diseñadora Gráfica Certificada",
+        "institution": "Diseño Creativo Medellín",
+        "languages": "Spanish, English",
+        "language_level": "intermediate",
+        "user_id": 14
+    },
+    {
+        "ocupation": "Emprendedor",
+        "experience": 3,
+        "skills": "Gestión de negocios, Marketing",
+        "skills_level": "intermediate",
+        "certificate": "Emprendedor Exitoso",
+        "institution": "Emprendimientos Innovadores Lima",
+        "languages": "Spanish, English",
+        "language_level": "intermediate",
+        "user_id": 15
+    },
+    {
+        "ocupation": "Jardinero Experto",
+        "experience": 6,
+        "skills": "Diseño de jardines, Mantenimiento",
+        "skills_level": "expert",
+        "certificate": "Jardinero Experto Certificado",
+        "institution": "Jardines Únicos Quito",
+        "languages": "Spanish",
+        "language_level": "native",
+        "user_id": 16
+    },
+    {
+        "ocupation": "Asesor de Salud",
+        "experience": 4,
+        "skills": "Asesoramiento personalizado, Cuidado de la salud",
+        "skills_level": "intermediate",
+        "certificate": "Asesor de Salud Certificado",
+        "institution": "Salud Total Santiago",
+        "languages": "Spanish",
+        "language_level": "native",
+        "user_id": 17
+    },
+    {
+        "ocupation": "Servicios de Limpieza",
+        "experience": 5,
+        "skills": "Limpieza para hogares y oficinas",
+        "skills_level": "intermediate",
+        "certificate": "Servicios de Limpieza Certificados",
+        "institution": "Limpieza Efectiva Caracas",
+        "languages": "Spanish",
+        "language_level": "native",
+        "user_id": 18
+    },
+    {
+        "ocupation": "Experto en Construcción",
+        "experience": 5,
+        "skills": "Construcción, Remodelación",
+        "skills_level": "intermediate",
+        "certificate": "Constructor Certificado",
+        "institution": "Construye Bien Montevideo",
+        "languages": "Spanish, Portuguese",
+        "language_level": "intermediate",
+        "user_id": 19
+    },
+    {
+        "ocupation": "Experto en Mudanzas",
+        "experience": 3,
+        "skills": "Servicios de mudanzas rápidas y seguras",
+        "skills_level": "intermediate",
+        "certificate": "Experto en Mudanzas Certificado",
+        "institution": "Mudanzas Express Asunción",
+        "languages": "Spanish, Guarani",
+        "language_level": "intermediate",
+        "user_id": 20
+    },
+    {
+        "ocupation": "Asesor Tecnológico",
+        "experience": 6,
+        "skills": "Asesoramiento, Desarrollo de soluciones digitales",
+        "skills_level": "expert",
+        "certificate": "Asesor Tecnológico Certificado",
+        "institution": "Tecnología Innovadora Sao Paulo",
+        "languages": "Spanish, Portuguese",
+        "language_level": "native",
+        "user_id": 21
+    },
+    {
+        "ocupation": "Entrenadora Personal",
+        "experience": 4,
+        "skills": "Entrenamiento personalizado",
+        "skills_level": "intermediate",
+        "certificate": "Certificación Fitness",
+        "institution": "Instituto de Fitness Bogotá",
+        "languages": "Spanish",
+        "language_level": "native",
+        "user_id": 22
+    },
+    {
+        "ocupation": "Organizador de Eventos",
+        "experience": 5,
+        "skills": "Planificación, Ejecución de eventos",
+        "skills_level": "intermediate",
+        "certificate": "Organizador de Eventos Certificado",
+        "institution": "Eventos Creativos Valparaíso",
+        "languages": "Spanish, English",
+        "language_level": "intermediate",
+        "user_id": 23
+    },
+    {
+        "ocupation": "Traductora",
+        "experience": 4,
+        "skills": "Servicios de traducción rápidos y precisos",
+        "skills_level": "intermediate",
+        "certificate": "Traductora Certificada",
+        "institution": "Traducciones Express Lima",
+        "languages": "Spanish, English",
+        "language_level": "intermediate",
+        "user_id": 24
+    },
+    {
+        "ocupation": "Entrenador Personal",
+        "experience": 6,
+        "skills": "Enfoque en salud y bienestar",
+        "skills_level": "expert",
+        "certificate": "Entrenador Personal Certificado",
+        "institution": "Entrenamiento Activo Guayaquil",
+        "languages": "Spanish",
+        "language_level": "native",
+        "user_id": 25
     }
   ]

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { Navigate, Link, useParams } from "react-router-dom";
+import '../../styles/home.css'
 
 export const PublicProfile = () => {
     const { store, actions } = useContext(Context)
@@ -26,7 +27,7 @@ export const PublicProfile = () => {
                 <div className="contianer mt-4">
                     <>
                         <h2>Personal Info:</h2>
-                        <img className="img-thumbnail" src={offerDetail[1]?.avatar}></img>
+                        <img className="avatar" src={offerDetail[1]?.avatar}></img>
                         <p className="fs-4">Nickname: {offerDetail[1]?.nickname}</p>
                         <p className="fs-4">Personal description: <span className="fs-5">{offerDetail[1]?.description}</span></p>
                         <p className="fs-4">Address: {offerDetail[1]?.address}</p>

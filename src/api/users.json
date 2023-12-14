@@ -58,5 +58,95 @@
         "lastname": "Hernández",
         "email": "martinhernandez@gmail.com",
         "password": "12345Martin"
-      }
+      },
+      {
+        "name": "Pedro",
+        "lastname": "Fernández",
+        "email": "pedrofernandez@gmail.com",
+        "password": "12345Pedro"
+    },
+    {
+        "name": "Mónica",
+        "lastname": "López",
+        "email": "monicalopez@gmail.com",
+        "password": "12345Monica"
+    },
+    {
+        "name": "Ricardo",
+        "lastname": "Gutiérrez",
+        "email": "ricardogutierrez@gmail.com",
+        "password": "12345Ricardo"
+    },
+    {
+        "name": "Paula",
+        "lastname": "Martínez",
+        "email": "paulamartinez@gmail.com",
+        "password": "12345Paula"
+    },
+    {
+        "name": "Fernando",
+        "lastname": "Sánchez",
+        "email": "fernandosanchez@gmail.com",
+        "password": "12345Fernando"
+    },
+    {
+        "name": "Cristina",
+        "lastname": "Herrera",
+        "email": "cristinaherrera@gmail.com",
+        "password": "12345Cristina"
+    },
+    {
+        "name": "Juan",
+        "lastname": "Ramón",
+        "email": "juanramon@gmail.com",
+        "password": "12345Juan"
+    },
+    {
+        "name": "Eva",
+        "lastname": "González",
+        "email": "evagonzalez@gmail.com",
+        "password": "12345Eva"
+    },
+    {
+        "name": "Alberto",
+        "lastname": "Pérez",
+        "email": "albertoperez@gmail.com",
+        "password": "12345Alberto"
+    },
+    {
+        "name": "Silvia",
+        "lastname": "Díaz",
+        "email": "silviadiaz@gmail.com",
+        "password": "12345Silvia"
+    },
+    {
+        "name": "Roberto",
+        "lastname": "Vega",
+        "email": "robertovega@gmail.com",
+        "password": "12345Roberto"
+    },
+    {
+        "name": "Natalia",
+        "lastname": "Hernández",
+        "email": "nataliahernandez@gmail.com",
+        "password": "12345Natalia"
+    },
+    {
+        "name": "Andrés",
+        "lastname": "Ortega",
+        "email": "andresortega@gmail.com",
+        "password": "12345Andres"
+    },
+    {
+        "name": "Raquel",
+        "lastname": "Molina",
+        "email": "raquelmolina@gmail.com",
+        "password": "12345Raquel"
+    },
+    {
+        "name": "Hugo",
+        "lastname": "Santos",
+        "email": "hugosantos@gmail.com",
+        "password": "12345Hugo"
+    }
 ]

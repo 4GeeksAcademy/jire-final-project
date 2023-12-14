@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 608cf021cfe0
+Revision ID: 3159dbfa439f
 Revises: 
-Create Date: 2023-12-14 02:29:34.698788
+Create Date: 2023-12-14 15:16:54.876626
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '608cf021cfe0'
+revision = '3159dbfa439f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -37,7 +37,7 @@ def upgrade():
     sa.Column('country', sa.String(length=30), nullable=False),
     sa.Column('state', sa.String(length=40), nullable=False),
     sa.Column('city', sa.String(length=40), nullable=False),
-    sa.Column('category', sa.Enum('mantenimiento', 'limpieza', 'construccion', 'jardineria', 'mudanzas', 'tecnologias', 'negocios', 'salud', 'eventos', 'traducciones', 'idiomas', 'personal_trainning', name='category'), nullable=False),
+    sa.Column('category', sa.Enum('mantenimiento', 'limpieza', 'construccion', 'jardineria', 'mudanzas', 'tecnologias', 'negocios', 'salud', 'eventos', 'traducciones', 'idiomas', 'personal_training', name='category'), nullable=False),
     sa.Column('service', sa.Enum('remote', 'in_place', name='service_type'), nullable=False),
     sa.Column('images', sa.String(length=250), nullable=True),
     sa.Column('public_image_id', sa.String(length=100), nullable=True),
@@ -84,7 +84,7 @@ def upgrade():
     sa.Column('country', sa.String(length=30), nullable=False),
     sa.Column('state', sa.String(length=40), nullable=False),
     sa.Column('city', sa.String(length=40), nullable=False),
-    sa.Column('category', sa.Enum('mantenimiento', 'limpieza', 'construccion', 'jardineria', 'mudanzas', 'tecnologias', 'negocios', 'salud', 'eventos', 'traducciones', 'idiomas', 'personal_trainning', name='category'), nullable=False),
+    sa.Column('category', sa.Enum('mantenimiento', 'limpieza', 'construccion', 'jardineria', 'mudanzas', 'tecnologias', 'negocios', 'salud', 'eventos', 'traducciones', 'idiomas', 'personal_training', name='category'), nullable=False),
     sa.Column('service', sa.Enum('remote', 'in_place', name='service_type'), nullable=False),
     sa.Column('images', sa.String(length=250), nullable=True),
     sa.Column('public_image_id', sa.String(length=100), nullable=True),

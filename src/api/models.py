@@ -34,7 +34,7 @@ class category(Enum):
     eventos = "eventos",
     traducciones = 'traducciones'
     idiomas = 'idiomas',
-    personal_trainning = 'personal_trainning'
+    personal_training = 'personal_training'
 
 
 
