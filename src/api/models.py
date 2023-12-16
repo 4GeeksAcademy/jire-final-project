@@ -25,7 +25,7 @@ class service_type(Enum):
 class category(Enum):
     mantenimiento = "mantenimiento",
     limpieza = "limpieza",
-    construccion = "construcción",
+    construccion = "construccion",
     jardineria = "jardineria",
     mudanzas = "mudanzas",
     tecnologias = "tecnologias",
@@ -41,6 +41,8 @@ class category(Enum):
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), unique=False, nullable=False)
+    lastname = db.Column(db.String(30), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(180), unique=False, nullable=False)
     salt = db.Column(db.String(180), unique=False, nullable=False)
@@ -183,7 +185,3 @@ class Services(db.Model):
     solicitud_id = db.Column(db.Integer, db.ForeignKey('solicitudes.id'))
     oferta_id = db.Column(db.Integer, db.ForeignKey('ofertas.id'))
     date = db.Column(db.String(90), nullable=False, unique=False)
-
-
-
-

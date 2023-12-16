@@ -54,7 +54,7 @@ const AddSolicitud = () => {
     }
 
     const handleImage = (event) => {
-        if (event.target.files[0].type == "image/jpg" || event.target.files[0].type == "image/jpeg") {
+        if (event.target.files[0].type == "image/jpg" || event.target.files[0].type == "image/jpeg" || event.target.files[0].type == "image/png") {
             setSolicitud({ ...solicitud, images: event.target.files[0] })
         } else {
             console.log("Format not compatible")
