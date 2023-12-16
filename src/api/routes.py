@@ -612,6 +612,7 @@ def send_email_app():
     email = body.get("email")
 
     message = f'''
+    <img src="https://res.cloudinary.com/dxxgwwhpk/image/upload/v1702687083/wnpqwch5hxfmizchungd.png" style="width:200px"></img>
     <h3>Hola!, me intereso tu oferta sobre {title}</h3>
     <p>Me complace en informarle que ha sido seleccionado/a para llevar a cabo el trabajo sobre {title}</p>
     <p>Valoramos su expriencia y habilidades y creemos que sera un excelente aporte</p>
