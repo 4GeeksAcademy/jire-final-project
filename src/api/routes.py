@@ -613,9 +613,12 @@ def send_email_app():
 
     message = f'''
     <h3>Hola!, me intereso tu oferta sobre {title}</h3>
-    <p>Te dejo mi contacto para que me escribas o me llames<p/>
-    <p>{phone}</p>
-    <p>{email}</p>
+    <p>Me complace en informarle que ha sido seleccionado/a para llevar a cabo el trabajo sobre {title}</p>
+    <p>Valoramos su expriencia y habilidades y creemos que sera un excelente aporte</p>
+    <p>Para coordinar los detalles, comenzar el proceso y proporcionarle mas detalles sobre el proyecto. 
+    podria por favor ponerse en contacto conmigo a la brevedad?</p>
+    <p>Telefono: {phone}</p>
+    <p>Email: {email}</p>
     '''
     
     result = send_email(body.get("subject"), body.get("to"), message)
