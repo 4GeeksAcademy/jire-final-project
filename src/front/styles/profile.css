@@ -1,0 +1,82 @@
+.avatar-info {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    margin-right: 20px;
+}
+
+.info {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.name-nickname {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-left: 8px;
+}
+
+.name-nickname h2 {
+    margin: 0; 
+}
+
+.profile-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.description{
+    margin-left: 8px
+}
+
+.language{
+    margin: 0px 40px 0px 8px;
+}
+
+.nickname{
+    color: #494949;
+    margin-top: 2px;
+}
+
+.address{
+    font-size: small;
+}
+
+.contact-title{
+    margin-top: 10px;
+}
+.contact-info{
+    text-align: left;
+    margin: 0px 0px 70px 70px;
+}
+
+.language-info,
+.occupation-years,
+.skills,
+.certificate-institution{
+    display: flex;
+    justify-content: normal;
+}
+
+.occupation,
+.skill,
+.certificate{
+    margin-right: 40px;
+}
+
+.info-professional{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-button{
+    display: flex;
+    justify-content: right;
+    margin-top: 30px;
+}

@@ -5,6 +5,7 @@ import { Cards } from "../component/cards";
 import { Carrousel } from "../component/carrousel";
 import { Categorias } from "../component/categorias";
 
+
 export const Home = () => {
 
 	return (

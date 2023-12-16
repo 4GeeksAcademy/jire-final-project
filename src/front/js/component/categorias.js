@@ -1,107 +1,36 @@
-import React from "react";
-import "../../styles/home.css";
-
-<script src="https://kit.fontawesome.com/c2631e3b99.js" crossorigin="anonymous"></script>
+import React, { useState } from "react";
+import "../../styles/categorias.css";
+import { Link } from "react-router-dom";
 
 export const Categorias = () => {
+    const [categorias, setCategoria ] = useState([
+        { texto: "Mantenimiento", link:"/categorias/mantenimiento", imagen: "fa-tools" },
+        { texto: "Limpieza", link:"/categorias/limpieza", imagen: "fa-broom" },
+        { texto: "Construcción", link:"/categorias/construccion", imagen: "fa-broom" },
+        { texto: "Jardineria", link:"/categorias/jardineria", imagen: "fa-tree" },
+        { texto: "Mudanzas", link:"/categorias/mudanzas", imagen: "fa-box-open" },
+        { texto: "Tecnología", link:"/categorias/tecnologias", imagen: "fa-laptop" },
+        { texto: "Asesoría de negocios", link:"/categorias/negocios", imagen: "fa-chart-bar"},
+        { texto: "Salud", link:"/categorias/salud", imagen: "fa-leaf" },
+        { texto: "Eventos", link:"/categorias/eventos", imagen: "fa-birthday-cake" },
+        { texto: "Traducciones", link:"/categorias/traducciones", imagen: "fa-solid fa-language " },
+        { texto: "Aprende idiomas", link:"/categorias/idiomas", imagen: "fa-solid fa-book" },
+        { texto: "Personal Trainning", link:"/categorias/personal_training", imagen: "fa-solid fa-dumbbell" },  
+    ]);
+
     return (
         <>
-            <div class="container mt-4">
-                <div class="row">
-
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <i class="fas fa-tools fa-2x mb-2"></i>
-                                <h5 class="card-title">Mantenimiento</h5>
+            <div className="container my-4">
+                <div className="row">
+                    {categorias.map((categoria, index)=> (<div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 text-nowrap">
+                         <Link to={categoria.link} className="card text-center btn btn-outline-dark" >
+                            <div className="card-body">
+                                <i className={"fas  fa-2x mb-2 "+ categoria.imagen}> </i>
+                                <h5 className="card-title text-nowrap"> {categoria.texto}</h5>
                             </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <i class="fas fa-broom fa-2x mb-2"></i>
-                                <h5 class="card-title">Limpieza</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <i class="fas fa-building fa-2x mb-2"></i>
-                                <h5 class="card-title">Construcción</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <i class="fas fa-tree fa-2x mb-2"></i>
-                                <h5 class="card-title"> Jardineria</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <i class="fas fa-box-open fa-2x mb-2"></i>
-                                <h5 class="card-title">Mudanzas</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <i class="fas fa-laptop fa-2x mb-2"></i>
-                                <h5 class="card-title">Tecnología</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <i class="fas fa-chart-bar fa-2x mb-2"></i>
-                                <h5 class="card-title">Consultoría empresarial</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <i class="fas fa-leaf fa-2x mb-2"></i>
-                                <h5 class="card-title">Salud y bienestar</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <i class="fas fa-birthday-cake fa-2x mb-2"></i>
-                                <h5 class="card-title">Eventos y entretenimiento</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <i class="fas fa-graduation-cap fa-2x mb-2"></i>
-                                <h5 class="card-title">Servicios educativos</h5>
-                            </div>
-                        </div>
-                    </div>
-
-
-
+                        </Link>
+                    </div>))}
+                    
                 </div>
             </div>
         </>
