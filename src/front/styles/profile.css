@@ -64,12 +64,9 @@
 }
 
 .occupation,
-.skill{
-    margin-right: 40px;
-}
-
+.skill,
 .certificate{
-    margin-right: 10px;
+    margin-right: 40px;
 }
 
 .info-professional{

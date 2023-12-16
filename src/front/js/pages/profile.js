@@ -85,7 +85,7 @@ export const Profile = () => {
                                 <div className="info-professional">
                                     <div className="occupation-years">
                                         <p className="fs-6 occupation"><i class="fa-solid fa-briefcase"></i> <strong>Occupation: </strong>{profile[2]?.ocupation} </p>
-                                        <p className="fs-6"><i class="fa-solid fa-calendar"></i> Years of experience: {profile[2]?.experience}</p>
+                                        <p className="fs-6"><i class="fa-solid fa-calendar"></i> <strong>Years of experience: </strong>{profile[2]?.experience}</p>
                                     </div>
                                     <div className="certificate-institution">
                                         <p className="fs-6 certificate"><i class="fa-solid fa-certificate"></i> <strong> Certificate: </strong>{profile[2]?.certificate}</p>
