@@ -21,8 +21,6 @@ export const Profile = () => {
          load()
      }, [])
 
-     console.log(profile[2]?.occupation)
-
     return (
         <>
         {loading? <Loader/>:

@@ -302,12 +302,17 @@ def get_user(user_id=None):
         return jsonify({'message': 'Access denied'}), 403
 
 
-@api.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
+#Get all offers
+@api.route('/ofertas', methods=['GET'])
+def get_offers():
+    ofertas = Ofertas.query.all() 
+    return jsonify(list(map(lambda of: of.serialize(), ofertas)))
 
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-    }
+#Get all requests
+@api.route('/solicitudes', methods=['GET'])
+def get_solicitudes():
+    solicitudes = Solicitudes.query.all()
+    return jsonify(list(map(lambda sol: sol.serialize(), solicitudes)))
 
 
 @api.route('/personalinfo', methods=['POST'])

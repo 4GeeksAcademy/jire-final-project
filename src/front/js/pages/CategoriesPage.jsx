@@ -22,8 +22,10 @@ export const CategoriesPage = () => {
         load()
     }, [])
 
-    const offers = store.ofertas.filter((offer) => offer.category[0] == category.categoria || offer.category == category.categoria)
-    const solicitudes = store.solicitudes.filter((sol) => sol.category[0] == category.categoria || sol.category == category.categoria)
+    const offers = store.ofertas.filter((offer) => offer.category[0] == category.categoria || offer.category == category.categoria  )
+    const solicitudes = store.solicitudes.filter((sol) => sol.category[0] == category.categoria || sol.category == category.categoria )
+
+    console.log(offers, solicitudes);
 
 
     return (
