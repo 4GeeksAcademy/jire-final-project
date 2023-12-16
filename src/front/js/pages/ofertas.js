@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import Filter from '../component/filter'
 
 
+
 export const Ofertas = () => {
     const { store, actions } = useContext(Context)
     const [isFiltered, setIsFiltered] = useState(false)

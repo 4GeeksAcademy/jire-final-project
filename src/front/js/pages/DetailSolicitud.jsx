@@ -11,7 +11,7 @@ const DetailSolicitud = () => {
   const userid = useParams()
   const id = useParams()
   const { solicitudProfile, profile } = store
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
 
   const load = () => {

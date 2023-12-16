@@ -3,6 +3,7 @@ import { Context } from "../store/appContext"
 import { CardSolicitudes } from "../component/cardSolicitudes"
 import { Link } from "react-router-dom"
 import Filter from "../component/filter"
+import { Loader } from "../component/loader.jsx"
 
 
 
@@ -13,8 +14,16 @@ export const Solicitudes = () => {
         service:""
     })
     const [isFiltered, setIsFiltered] = useState(false)
+    const [loading, setLoading] = useState(true)
 
+
+    const load = () =>{
+        setTimeout(() =>{
+            setLoading(false)
+        }, 1000)
+    }
     useEffect(() => {
+        load()
         actions.getSolicitudes()
     }, [])
 
@@ -30,7 +39,9 @@ export const Solicitudes = () => {
 
     return (
         <>
-        <div className="text-center my-3">
+        {loading? <Loader/>:
+        <>
+            <div className="text-center my-3">
         <div className="d-flex justify-content-center">
         <h1 className="text-center mx-2">Catalogo de Solicitudes</h1>
         <Link to='/addsolicitud'>
@@ -65,6 +76,8 @@ export const Solicitudes = () => {
                 No hay solicitudes sobre {filter.category}
                 <Link to="/addsolicitud"><button className="btn btn-primary mx-3">Agregar una Solicitud</button></Link>
             </div> : <Filter filters={filteredCards} />}
+        </>
+        }
         </>
     )
 }
